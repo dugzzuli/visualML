@@ -1,0 +1,106 @@
+@font-face{
+	font-family: supermarket;
+	src: url('supermarket.ttf');
+
+}
+
+body{
+	margin: 0 0 0 0;
+	color:white;
+	font-size:20px;
+	font-family: supermarket;
+}
+
+.allContent{
+
+}
+
+.greenFade{
+	background-color: black;
+	background: -webkit-radial-gradient(100% 50px ellipse at 50% 99%,rgb(0,40,0) 10%, black 90%); /* Safari 5.1 to 6.0 */
+  	background: -o-radial-gradient(100% 50px ellipse at 50% 99%,rgb(0,40,0) 10%, black 90%); /* For Opera 11.6 to 12.0 */
+  	background: -moz-radial-gradient(100% 50px ellipse at 50% 99%,rgb(0,40,0) 10%, black 90%); /* For Firefox 3.6 to 15 */
+  	background: radial-gradient(100% 50px ellipse at 50% 99%,rgb(0,40,0) 10%, black 90%); /* Standard syntax */
+}
+
+.mainContent{
+	padding: 20px 100px 50px 100px;
+	border-bottom: 1px solid rgb(26,97,26);
+/*	background-image: url("img/dark-green.gif");
+	background-repeat: no-repeat;
+	background-size:auto;
+	background-position: center;
+	background-color: rgb(4,13,9);*/
+}
+
+.mainContent h2{
+	text-align: center;
+}
+
+.mainContent p{
+	font-size: 1em;
+}
+
+.banner{
+	background-image: url("img/topbgcut.jpg");
+	background-size: cover;
+	text-align: center;
+	padding-top: 50px;
+	color: white;
+/*	height:300px;*/
+}
+
+.banner h1,h2{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.banner h1{
+	font-size: 50px;
+}
+
+.banner h2{
+	font-size: 40px;
+}
+
+.icon{
+	padding: 50px 100px 100px 100px;
+/*	height:150px;*/
+	text-align: center;
+}
+
+.icon a{
+	text-decoration: none;
+}
+
+.logo{
+	width: 160px;
+	height: 160px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(255,255,255,0.2);
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
+	padding-top: 20px;
+	margin-right: 20px;
+	-webkit-transition: box-shadow 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.2s;
+}
+
+.logo:hover{
+	border-color:white;
+	box-shadow: 0 0 50px #316696;
+/*	border-width: 2px;*/
+}
+
+.logo img{
+	height:100px;
+	width:100px;
+}
+
+.logo .logoLabel{
+	display:block;
+	color:white;
+}
+
