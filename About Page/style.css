@@ -200,6 +200,10 @@ footer{
 	text-align: left;
 }
 
+#function{
+	height:auto;
+}
+
 #function h3{
 	display : block;
 	margin-top: 60px; 
@@ -236,3 +240,24 @@ footer{
     margin-right: auto;
 }
 
+<<<<<<< HEAD
+#sample2Block{
+	float:left;
+	margin-left: 10px;
+	margin-right: 50px;
+}
+
+#sample2Block span{
+	display: block;
+	font-size: 18px;
+	text-align: center;
+	color: gray;
+}
+
+#sample2Block #sample2{
+	border-radius: 5px;
+	height:250px;
+	width:400px;
+}
+=======
+>>>>>>> f20074ca9d3757653db27db7c802f7170ec73219
