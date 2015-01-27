@@ -196,23 +196,20 @@ footer{
 
 #radio1:checked ~ #desRadio1{
 	display: block;
-/*	text-align: left;*/
 }
 
 #radio2:checked ~ #desRadio2{
 	display: block;
-/*	text-align: left;*/
 }
 
 #radio3:checked ~ #desRadio3{
 	display: block;
-/*	text-align: left;*/
 }
 
-#function{
+/*#function{
 	height:auto;
 }
-
+*/
 #function h3{
 	display : block;
 	margin-top: 60px; 
