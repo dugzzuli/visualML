@@ -134,3 +134,11 @@ body{
 	width:300px;
 	margin-left: 10px;
 }
+
+#function1{
+	float:right;
+	height:200px;
+	width:350px;
+	margin-left: 10px;
+	border-radius: 10px;
+}
