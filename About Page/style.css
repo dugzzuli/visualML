@@ -84,8 +84,8 @@ body{
 	text-align: center;
 	padding-top: 20px;
 	margin-right: 20px;
-	-webkit-transition: box-shadow 0.2s; /* For Safari 3.1 to 6.0 */
-    transition: box-shadow 0.2s;
+	-webkit-transition: box-shadow 0.1s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.1s;
 }
 
 .logo:hover{
@@ -104,3 +104,31 @@ body{
 	color:white;
 }
 
+#overviewPic1{
+	float:left;
+	height:180px;
+	width:135px;
+	margin-right: 10px;
+}
+
+#overviewPic2, #overviewPic3, #overviewPic4{
+	height:200px;
+	width:300px;
+	display: inline-block;
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	/*border: 2px solid green;*/
+}
+
+#overviewDiv1{
+	text-align: center;
+}
+
+#overviewPic5{
+	float:right;
+	height:180px;
+	width:300px;
+	margin-left: 10px;
+}
