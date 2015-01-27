@@ -143,10 +143,66 @@ footer{
 	margin-left: 10px;
 }
 
+.radioMenu{
+	text-align: center;
+}
+
+.radioHide{
+	display:none;
+}
+
+.radioMenu label {
+	padding: 5px 15px 5px 15px;
+	margin-right: 5px;
+  	width: 100%;
+  	border-radius: 5px;
+  	border: 1px solid #D1D3D4;
+  	display: block;
+  	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    background-color: #666;
+    -webkit-transition: background-color 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.3s;
+}
+
+.radioMenu label:hover {
+    background-color: rgb(0,20,0);
+}
+
+.radioHide:checked + label {
+  	background-color: rgb(0,100,0);
+}
+
+.problemDescription{
+	display: none;	
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 98%;
+	border:1px solid #D1D3D4;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	background-color: rgba(100,255,100,0.1);
+}
+
+#radio1:checked ~ #desRadio1{
+	display: block;
+	text-align: left;
+}
+
+#radio2:checked ~ #desRadio2{
+	display: block;
+	text-align: left;
+}
+
+#radio3:checked ~ #desRadio3{
+	display: block;
+	text-align: left;
+}
+
 #function{
 	height:auto;
 }
-
 
 #function h3{
 	display : block;
@@ -184,6 +240,7 @@ footer{
     margin-right: auto;
 }
 
+<<<<<<< HEAD
 #sample2Block{
 	float:left;
 	margin-left: 10px;
@@ -202,3 +259,5 @@ footer{
 	height:250px;
 	width:400px;
 }
+=======
+>>>>>>> f20074ca9d3757653db27db7c802f7170ec73219
