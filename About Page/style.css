@@ -36,6 +36,7 @@ footer{
 .mainContent{
 	padding: 20px 100px 50px 100px;
 	border-bottom: 1px solid rgb(26,97,26);
+	height: auto;
 /*	background-image: url("img/dark-green.gif");
 	background-repeat: no-repeat;
 	background-size:auto;
@@ -200,10 +201,6 @@ footer{
 	text-align: left;
 }
 
-#function{
-	height:auto;
-}
-
 #function h3{
 	display : block;
 	margin-top: 60px; 
@@ -240,21 +237,46 @@ footer{
     margin-right: auto;
 }
 
-#sample2Block{
+#layoutImgBlock{
 	float:left;
 	margin-left: 10px;
 	margin-right: 50px;
 }
 
-#sample2Block span{
+#layoutImgBlock span{
 	display: block;
 	font-size: 18px;
 	text-align: center;
 	color: gray;
 }
 
-#sample2Block #sample2{
+#layoutImgBlock #sample2{
 	border-radius: 5px;
 	height:250px;
 	width:400px;
+}
+
+#layoutblock{
+	height:350px;
+}
+
+.sampleblock{
+	text-align: center;
+}
+
+.sampleImgBlock{
+	display: inline-block;
+	margin: 0px 50px 0px 50px;
+}
+
+.sampleImgBlock span{
+	display: block;
+	font-size: 18px;
+	text-align: center;
+	color: gray;
+}
+.sampleImgBlock img{
+	border-radius: 5px;
+	height:270px;
+	width:500px;
 }
