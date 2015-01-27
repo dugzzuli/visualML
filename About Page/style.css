@@ -9,6 +9,7 @@ body{
 	color:white;
 	font-size:20px;
 	font-family: supermarket;
+	line-height: 30px;
 }
 
 .allContent{
@@ -47,6 +48,7 @@ body{
 	text-align: center;
 	padding-top: 50px;
 	color: white;
+	line-height: 60px;
 /*	height:300px;*/
 }
 
