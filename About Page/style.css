@@ -143,6 +143,9 @@ footer{
 	margin-left: 10px;
 }
 
+#function{
+	height:auto;
+}
 
 
 #function h3{
@@ -179,4 +182,23 @@ footer{
 	display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#sample2Block{
+	float:left;
+	margin-left: 10px;
+	margin-right: 50px;
+}
+
+#sample2Block span{
+	display: block;
+	font-size: 18px;
+	text-align: center;
+	color: gray;
+}
+
+#sample2Block #sample2{
+	border-radius: 5px;
+	height:250px;
+	width:400px;
 }
