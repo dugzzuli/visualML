@@ -260,16 +260,19 @@ footer{
 }
 
 #layoutblock{
-	height:350px;
+	height: auto;
+	min-height:350px;
 }
 
-.sampleblock{
+#sampleImgMainblock{
+	display: block;
 	text-align: center;
+
 }
 
 .sampleImgBlock{
 	display: inline-block;
-	margin: 0px 50px 0px 50px;
+	margin: 0px 30px 0px 30px;
 }
 
 .sampleImgBlock span{
