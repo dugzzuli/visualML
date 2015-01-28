@@ -48,10 +48,6 @@ footer{
 	text-align: center;
 }
 
-.mainContent p{
-	font-size: 1em;
-}
-
 .banner{
 	background-image: url("img/topbgcut.jpg");
 	background-size: cover;
