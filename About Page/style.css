@@ -186,20 +186,27 @@ footer{
 	background-color: rgba(100,255,100,0.1);
 }
 
+.problemDescription p{
+	text-align: left;
+}
+
+.problemDescription img{
+	text-align: center;
+}
+
+
 #radio1:checked ~ #desRadio1{
 	display: block;
-	text-align: left;
 }
 
 #radio2:checked ~ #desRadio2{
 	display: block;
-	text-align: left;
 }
 
 #radio3:checked ~ #desRadio3{
 	display: block;
-	text-align: left;
 }
+
 
 #function h3{
 	display : block;
