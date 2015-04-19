@@ -24,6 +24,7 @@ footer{
 .navbar{
 	margin: 0px;
 	border-radius: 0px;
+	background-color: rgba(0,30,0,0.8);
 }
 
 .greenFade{
@@ -53,15 +54,10 @@ footer{
 	background-image: url("../img/topbgcut.jpg");
 	background-size: cover;
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 60px;
 	color: white;
 /*	line-height: 60px;*/
-	height:280px;
-}
-
-.banner h1,h2{
-/*	margin-top:0px;
-	margin-bottom:0px;*/
+	height:300px;
 }
 
 .banner h1{

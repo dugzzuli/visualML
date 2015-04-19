@@ -9,11 +9,12 @@
 		<link rel="stylesheet" href="css/register_style.css"/> 
 	</head>
 	<body>
-		<div class="container">
+		<div class="allContent">
+			<?php include 'navbar.php'; ?>
 			<div class="banner">	
 				<img src="img/VisualML.png"/>
 			</div>
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-4 col-md-offset-4">
 				<h1 class="text-center">Login</h1>
 				
 				<div class="form-group col-lg-12">

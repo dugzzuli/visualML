@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="css/register_style.css"/> 
 	</head>
 	<body>
-		<div class="container">
+		<div class="allContent">
+			<?php include 'navbar.php'; ?>
 			<div class="banner">	
 				<img src="img/VisualML.png"/>
 			</div>
