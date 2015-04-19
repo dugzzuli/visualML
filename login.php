@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<div class="container">
+			<?php include 'navbar.php'; ?>
 			<div class="banner">	
 				<img src="img/VisualML.png"/>
 			</div>

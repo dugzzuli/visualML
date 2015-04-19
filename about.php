@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<div class="allContent">
+			<?php include 'navbar.php'; ?>
 			<div class="banner">	
 				<img src="img/VisualML.png"/>		
 				<h1>Introducing VisualML</h1>
