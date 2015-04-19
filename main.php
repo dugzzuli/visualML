@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<title> VisualML:main </title>
+		<meta charset="utf-8"/>
+		<link href='http://fonts.googleapis.com/css?family=Felipa' rel='stylesheet' type='text/css'> 
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/> 
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/main_style.css"/> 
+	</head>
+	<body>
+		<div class="allContent">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand active" href="index.php">VisualML</a>
+				    </div>
+
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      	<ul class="nav navbar-nav">
+				        	<li><a href="about.php">About</a></li>
+				        	<?php
+				        	    if(!isset($_SESSION)) 
+							    { 
+							        session_start(); 
+							    } 
+								if(isset($_SESSION['username'])){
+									print '<li><a href="#">Main Window</a></li>';
+								}
+							?>		        
+				      	</ul>
+				      	<ul class="nav navbar-nav navbar-right">
+				      	<?php
+							if(!isset($_SESSION)) 
+						    { 
+						        session_start(); 
+						    } 
+							$content = '';
+							if(isset($_SESSION['username'])){
+								$content.= '<li class="dropdown">';
+								$content.= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'.$_SESSION['username'].'<span class="caret"></span></a>';
+								$content.='<ul class="dropdown-menu" role="menu">
+								            <li><a href="#">Edit Profile</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#">Logout</a></li>
+								        </ul>';
+								$content.='</li>';
+							}
+							else{
+								$content.='<li><a href="register.php">Sign Up</a></li>';
+								$content.='<li><a href="login.php">Log in</a></li>';
+							}
+							print $content;
+						?>					     					        
+
+				      	</ul>
+				    </div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<div class="col-md-8 col-xs-12 board">
+				Hello
+			</div>
+			<div class="col-md-4 col-xs-12 greenFade" id="sidebar">
+				<img src="img/VisualML.png" id="vmlLogo"/>
+				<ul class="nav nav-tabs" role="tablist" id="myTab">
+				  	<li role="presentation" class="dropdown">
+				        <a href="#" id="myTabDrop1" class="dropdown-toggle in active" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Classification<span class="caret"></span></a>
+				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+				          <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" class="active">Decision Tree</a></li>
+				          <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Neural Network</a></li>
+				        </ul>
+				  	</li>
+				  	<li role="presentation" class="dropdown">
+				        <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Regression<span class="caret"></span></a>
+				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
+				          <li><a href="#dropdown3" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">Linear Regression</a></li>
+				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Regression Tree</a></li>
+				        </ul>
+				  	</li>
+				  	<li role="presentation">
+						<a href="#" id="myTabDrop3" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Clustering<span class="caret"></span></a>
+				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
+				          <li><a href="#dropdown3" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">K-means</a></li>
+				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">DBSCAN</a></li>
+				        </ul>
+				  	</li>
+				</ul>
+
+				<div class="tab-content">
+			  		<div id="myTabContent" class="tab-content">
+				      	<div role="tabpanel" class="tab-pane fade in active" id="dropdown1" aria-labelledBy="dropdown1-tab">
+				        	<p>Decision Tree, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+				      	</div>
+				      	<div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab">
+				        	<p>Neural Network, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+				      	</div>
+				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab">
+					        <p>Linear Regression, probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+					    </div>
+					    <div role="tabpanel" class="tab-pane fade" id="dropdown4" aria-labelledBy="profile-tab">
+					        <p>Regression Tree, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+					    </div>
+					    <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledBy="home-tab">
+					        <p>K-means, probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+					    </div>
+					    <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledBy="profile-tab">
+					        <p>DBSCAN, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+					    </div>
+				    </div>
+				</div>
+
+				<script>
+				  $(function () {
+				  	$('.dropdown-toggle').dropdown()
+				    $('#myTab a:last').tab('show')
+				  })
+				</script>
+			</div>
+
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>
