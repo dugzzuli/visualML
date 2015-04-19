@@ -4,6 +4,7 @@
 		<title> VisualML:about </title>
 		<meta charset="utf-8"/>
 		<link href='http://fonts.googleapis.com/css?family=Felipa' rel='stylesheet' type='text/css'> 
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/> 
 		<link rel="stylesheet" href="css/style.css"/> 
 		<link rel="stylesheet" href="css/about_style.css"/> 
 	</head>
