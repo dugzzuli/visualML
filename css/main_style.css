@@ -1,0 +1,30 @@
+#sidebar{
+	background-color: black;
+	padding:0;
+	height:auto;
+	font-size: 16px;
+}
+
+.select_algo{
+	/*display:inline;*/
+	/*padding-left: 10px;*/
+}
+
+.board{
+	color:black;
+}
+
+#sidebar #vmlLogo{
+	width: 100%;
+	display:block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#myTab, .tab-content{
+	padding:10px;
+}
+
+.dropdown-menu{
+	color: black;
+}

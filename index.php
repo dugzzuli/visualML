@@ -23,16 +23,30 @@
 					<div class="logo">
 						<!-- <img src="img/overview-green.png"/> -->
 						<i class="fa fa-info-circle"></i>
-						<span class="logoLabel">เกี่ยวกับเรา</span>
+						<span class="logoLabel">About</span>
 					</div>
 				</a>
-				<a href="#function">
-					<div class="logo">
-						<!-- <img src="img/function-green.png"/> -->
-						<i class="fa fa-play-circle"></i>
-						<span class="logoLabel">เข้าสู่ระบบ</span>
-					</div>
-				</a>				
+<!-- 				<a href="#function">
+					<div class="logo"> -->
+						<!-- <img src="img/function-green.png"/> -->						
+						<?php
+							if(isset($_SESSION['username'])){
+								print '<a href="#function">
+										<div class="logo">';
+								print '<i class="fa fa-play-circle"></i>';
+								print '<span class="logoLabel">Start</span>';	
+								print '</div>
+										</a>';							
+							}
+							else{
+								print '<a href="login.php">
+										<div class="logo">';
+								print '<i class="fa fa-user"></i>';
+								print '<span class="logoLabel">Login</span>';
+								print '</div>
+										</a>';
+							}							
+						?>								
 			</div>
 		</div>
 		<footer>
