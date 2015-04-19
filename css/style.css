@@ -54,10 +54,10 @@ footer{
 	background-image: url("../img/topbgcut.jpg");
 	background-size: cover;
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 60px;
 	color: white;
 /*	line-height: 60px;*/
-	height:280px;
+	height:300px;
 }
 
 .banner h1,h2{

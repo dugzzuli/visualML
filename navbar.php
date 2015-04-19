@@ -8,7 +8,7 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand active" href="/">VisualML</a>
+				      <a class="navbar-brand active" href="index.php">VisualML</a>
 				    </div>
 
 				    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,7 +16,10 @@
 				      	<ul class="nav navbar-nav">
 				        	<li><a href="about.php">About</a></li>
 				        	<?php
-								session_start();
+				        	    if(!isset($_SESSION)) 
+							    { 
+							        session_start(); 
+							    } 
 								if(isset($_SESSION['username'])){
 									print '<li><a href="#">Main Window</a></li>';
 								}
@@ -24,7 +27,10 @@
 				      	</ul>
 				      	<ul class="nav navbar-nav navbar-right">
 				      	<?php
-							session_start();
+							if(!isset($_SESSION)) 
+						    { 
+						        session_start(); 
+						    } 
 							$content = '';
 							if(isset($_SESSION['username'])){
 								$content.= '<li class="dropdown">';
