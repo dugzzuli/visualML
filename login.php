@@ -14,23 +14,38 @@
 			<div class="banner">	
 				<img src="img/VisualML.png"/>
 			</div>
-			<div class="col-md-4 col-md-offset-4">
+			<form class="col-md-4 col-md-offset-4" action="controllers/LoginController.php" method="post">
 				<h1 class="text-center">Login</h1>
-				
+				<?php
+					if(!isset($_SESSION)) 
+				    { 
+				        session_start(); 
+				    } 
+				   	if(isset($_SESSION['username'])){
+						header("Location: index.php");
+					}
+					if(isset($_SESSION['message'])&&count($_SESSION['message'])>0){
+						foreach ($_SESSION['message'] as $message) {
+							if($message["type"]=="error") print '<div class="alert alert-danger" role="alert">'.$message["content"].'</div>';
+						}
+						
+					}
+					unset($_SESSION['message']);
+				?>
 				<div class="form-group col-lg-12">
 					<label>Username</label>
-					<input type="text" name="" class="form-control" id="" value="">
+					<input type="text" name="username" class="form-control" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12">
 					<label>Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
+					<input type="password" name="password" class="form-control" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12" id="register_button">
-					<button type="button" class="btn btn-block btn-success btn-lg">Login</button>
+					<button type="submit" value="submit" class="btn btn-block btn-success btn-lg">Login</button>
 				</div>					
-			</div>
+			</form>
 		</div>
 	</body>
 </html>

@@ -2,7 +2,10 @@
 
 include("../models/Users.php");
 
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 $_SESSION["message"] = array();
 
@@ -16,11 +19,11 @@ if(!dbUtil_connect()){
 }
 
 if($email == ""){
-	$_SESSION["message"][] = array("type"=>"error", "content"=>"Email Address cannot be null");
+	$_SESSION["message"][] = array("type"=>"error", "content"=>"Please enter email address");
 	header("Location: ../register.php");
 }
 else if($username == ""){
-	$_SESSION["message"][] = array("type"=>"error", "content"=>"Username cannot be null");
+	$_SESSION["message"][] = array("type"=>"error", "content"=>"Please enter username");
 	header("Location: ../register.php");
 }
 else if(strlen($password) < 6){
