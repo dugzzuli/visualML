@@ -1,0 +1,11 @@
+body{
+	background-color: black;
+}
+
+.banner{
+	height: 200px;
+}
+
+#register_button{
+	margin-top: 10px;
+}
