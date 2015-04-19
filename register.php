@@ -33,7 +33,7 @@
 				</div>
 				
 				<div class="form-group col-lg-6">
-					<label>confirm Password</label>
+					<label>Confirm Password</label>
 					<input type="password" name="" class="form-control" id="" value="">
 				</div>
 

@@ -4,6 +4,7 @@
 		<title> VisualML:home </title>
 		<meta charset="utf-8"/>
 		<link href='http://fonts.googleapis.com/css?family=Felipa' rel='stylesheet' type='text/css'> 
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/> 
 		<link rel="stylesheet" href="css/style.css"/> 
 		<link rel="stylesheet" href="css/home_style.css"/> 
@@ -13,9 +14,25 @@
 		<div class="allContent">
 			<?php include 'navbar.php'; ?>
 			<div class="banner">	
-				<img src="img/VisualML.png"/>		
-				<h1>Introducing VisualML</h1>
-				<h2>Machine’s learning you; you’re learning too</h2>
+				<img src="img/VisualML.png"/>	
+				<!-- <h1>Introducing VisualML</h1> -->
+				<h1>Machine’s learning you; you’re learning too</h1>
+			</div>
+			<div class="icon greenFade">
+				<a href="about.php">
+					<div class="logo">
+						<!-- <img src="img/overview-green.png"/> -->
+						<i class="fa fa-info-circle"></i>
+						<span class="logoLabel">เกี่ยวกับเรา</span>
+					</div>
+				</a>
+				<a href="#function">
+					<div class="logo">
+						<!-- <img src="img/function-green.png"/> -->
+						<i class="fa fa-play-circle"></i>
+						<span class="logoLabel">เข้าสู่ระบบ</span>
+					</div>
+				</a>				
 			</div>
 		</div>
 		<footer>
