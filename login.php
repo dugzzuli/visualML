@@ -14,35 +14,20 @@
 				<img src="img/VisualML.png"/>
 			</div>
 			<div class="col-md-6 col-md-offset-3">
-				<h1 class="text-center">Registration</h1>
-
-				<div class="form-group col-lg-12">
-					<label>Email Address</label>
-					<input type="" name="" class="form-control" id="" value="">
-				</div>
+				<h1 class="text-center">Login</h1>
 				
 				<div class="form-group col-lg-12">
 					<label>Username</label>
 					<input type="text" name="" class="form-control" id="" value="">
 				</div>
 				
-				<div class="form-group col-lg-6">
+				<div class="form-group col-lg-12">
 					<label>Password</label>
 					<input type="password" name="" class="form-control" id="" value="">
 				</div>
 				
-				<div class="form-group col-lg-6">
-					<label>confirm Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
-				</div>
-
-				<div class="form-group col-lg-12">
-					<label>Select profile picture</label>
-					<input type="file" name="profile_picture">
-				</div>	
-				
 				<div class="form-group col-lg-12" id="register_button">
-					<button type="button" class="btn btn-block btn-success btn-lg">Register</button>
+					<button type="button" class="btn btn-block btn-success btn-lg">Login</button>
 				</div>					
 			</div>
 		</div>
