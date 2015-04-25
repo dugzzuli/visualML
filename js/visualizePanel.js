@@ -1,12 +1,13 @@
+var isPlot = false;
 var plotOption = 1;
-var panelWidth = 800;
-var panelHeight = 400;
+var panelWidth = $("#board").width()-60;
+var panelHeight = 500;
 var paddingBottom = 30;
-var paddingLeft = 50;
-var paddingTop = 50;
-var paddingRight = 100;
+var paddingLeft = 40;
+var paddingTop = 20;
+var paddingRight = 20;
 
-var selectedClass = "A";
+var selectedClass = null;
 
 var maxX = 1000;
 var maxY = 1000;
@@ -17,7 +18,7 @@ var currentIndexOfData = 0;
 
 
 // Create the SVG
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#board").append("svg")
 .attr("width", panelWidth+paddingRight+paddingLeft)
 .attr("height", panelHeight+paddingTop+paddingBottom)
 //.on("mousedown", mousedown)
@@ -106,15 +107,20 @@ function click() {
     //     x: point[0],
     //     y: point[1]
     // };
-    if (plotOption == 1) {
-        //plot a point
-        // Append a new point
-        addNewPoint(this);
-        console.log(this);
-    }
-    else if(plotOption == 3){
-        //plot point of line
+    if(isPlot){
+        if(selectedClass == null)   window.alert("Please select class");
+        else{
+            if (plotOption == 1) {
+                //plot a point
+                // Append a new point
+                addNewPoint(this);
+                console.log(this);
+            }
+            else if(plotOption == 3){
+                //plot point of line
 
+            }
+        }
     }
     
 }
@@ -138,7 +144,7 @@ var drawPointByDrag = null;
 function mousedown(){
     var p = this;
     console.log("mousedown");
-    if(plotOption == 2){
+    if(isPlot && plotOption == 2){
         drawPointByDrag = setInterval(function(){ 
                                         console.log("plot");
                                         console.log(svg);

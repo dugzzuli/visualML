@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="css/style.css"/>
 		<link rel="stylesheet" href="css/main_style.css"/> 
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/visualizePanel.css"/> 
 	</head>
 	<body>
 		<div class="allContent">
@@ -68,7 +69,7 @@
 				</div><!-- /.container-fluid -->
 			</nav>
 			<div class="col-md-8 col-xs-12" id="board" >
-				Hello
+				
 			</div>
 			<div class="col-md-4 col-xs-12" id="sidebar">
 				<img src="img/VisualML.png" id="vmlLogo"/>
@@ -181,5 +182,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/main_script.js"></script>
+		<script src="js/d3.min.js"></script>
+		<script src="js/visualizePanel.js"></script>
 	</body>
 </html>
