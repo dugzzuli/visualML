@@ -15,23 +15,23 @@
 }
 
 .dot.labelB{
-	fill: blue;
+	fill: green;
 }
 
 .dot.labelC{
-
+	fill: blue;
 }
 
 .dot.labelD{
-
+	fill: orange;
 }
 
 .dot.labelE{
-
+	fill: purple;
 }
 
 .dot.labelU{
-	fill: gray;
+	fill: grey;
 }
 
 .dot{

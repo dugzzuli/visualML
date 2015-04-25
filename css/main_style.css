@@ -22,6 +22,7 @@
 #board{
 	color:black;
 	height:550px;
+	padding: 0px;
 }
 
 #sidebar #vmlLogo{
