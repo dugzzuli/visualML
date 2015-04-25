@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/> 
 		<link rel="stylesheet" href="css/style.css"/>
 		<link rel="stylesheet" href="css/main_style.css"/> 
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="allContent">
@@ -65,10 +66,10 @@
 				    </div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 			</nav>
-			<div class="col-md-8 col-xs-12 board">
+			<div class="col-md-8 col-xs-12" id="board" >
 				Hello
 			</div>
-			<div class="col-md-4 col-xs-12 greenFade" id="sidebar">
+			<div class="col-md-4 col-xs-12" id="sidebar">
 				<img src="img/VisualML.png" id="vmlLogo"/>
 				<ul class="nav nav-tabs" role="tablist" id="myTab">
 				  	<li role="presentation" class="dropdown">
@@ -85,11 +86,11 @@
 				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Regression Tree</a></li>
 				        </ul>
 				  	</li>
-				  	<li role="presentation">
+				  	<li role="presentation" class="dropdown">
 						<a href="#" id="myTabDrop3" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Clustering<span class="caret"></span></a>
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
-				          <li><a href="#dropdown3" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">K-means</a></li>
-				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">DBSCAN</a></li>
+				          <li><a href="#dropdown5" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">K-means</a></li>
+				          <li><a href="#dropdown6" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">DBSCAN</a></li>
 				        </ul>
 				  	</li>
 				</ul>
@@ -116,17 +117,68 @@
 					    </div>
 				    </div>
 				</div>
-
-				<script>
-				  $(function () {
-				  	$('.dropdown-toggle').dropdown()
-				    $('#myTab a:last').tab('show')
-				  })
-				</script>
+			</div>
+			<div class="col-xs-12 greenFade" id="tooltab" >
+				<div class="col-md-3">
+					<div class="tool toolbutton pinbutton">
+						<a><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
+					</div>	
+					<div class="tool toolbutton">
+						<a><i class="fa fa-pencil"></i></a>
+					</div>	
+					<div class="tool toolbutton">
+						<a><i class="fa fa-paint-brush"></i></a>
+					</div>		
+					<div class="tool toolclear">
+						<a><i class="fa fa-undo"></i></a>
+					</div>
+					<div class="tool toolclear">
+						<a><i class="fa fa-file-o"></i></a>
+					</div>			
+				</div>
+				<div class="col-md-2" id="selectClass">
+					Class:&nbsp;
+					<div class="dropup">
+					  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+					    	Select Class
+					    	<span class="caret"></span>
+					  	</button>
+					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+						    <li role="presentation"><a class="aClass CA" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a></li>
+						    <li role="presentation"><a class="aClass CB" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:green;"></i>&nbsp;B</a></li>
+						    <li role="presentation"><a class="aClass CC" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:blue;"></i>&nbsp;C</a></li>
+						    <li role="presentation"><a class="aClass CD" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:orange;"></i>&nbsp;D</a></li>
+						    <li role="presentation"><a class="aClass CE" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:purple;"></i>&nbsp;E</a></li>
+						    <li role="presentation"><a class="aClass CU" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:grey;"></i>&nbsp;Unknown</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-1 pp">
+                    <div class="input-group pinpoint">
+					  	<span class="input-group-addon" id="px">X</span>
+					  	<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-1 pp">
+					<div class="input-group pinpoint">
+					  	<span class="input-group-addon" id="py">Y</span>
+					  	<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-1 pp">
+					<button type="button" class="btn btn-success pinpoint">Place</button>
+				</div>
+				<div class="col-md-2" id="compute">
+					<button type="button" class="btn btn-primary btn-block">Classify</button>
+				</div>
+				<div class="col-md-2" id="adjustParameter">
+					<button type="button" class="btn btn-primary btn-block">Adjust Parameters</button>
+				</div>
 			</div>
 
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/main_script.js"></script>
 	</body>
 </html>
