@@ -5,7 +5,7 @@ include('db_util.php');
 function insertUser($username, $email, $password){
 	global $db;
 	if(!isset($db)) return false;
-	$q = "INSERT INTO users (username, email, password) 
+	$q = "INSERT INTO visualml_users (username, email, password) 
 			VALUES ('".$username."',
 					'".$email."',
 					'".$password."')";
@@ -15,7 +15,7 @@ function insertUser($username, $email, $password){
 function findUser($username){
 	global $db;
 	if(!isset($db)) return false;
-	$q = 'SELECT * FROM users WHERE username = "'.$username.'"';
+	$q = 'SELECT * FROM visualml_users WHERE username = "'.$username.'"';
 	$r = mysqli_query($db,$q);
 	if($r = mysqli_query($db,$q)){
 		$row = mysqli_fetch_assoc($r);
@@ -27,7 +27,7 @@ function findUser($username){
 function isUsernameExist($username){
 	global $db;
 	if(!isset($db)) return false;
-	$q = 'SELECT * FROM users WHERE username = "'.$username.'"';
+	$q = 'SELECT * FROM visualml_users WHERE username = "'.$username.'"';
 	$r = mysqli_query($db,$q);
 	return mysqli_num_rows($r) > 0;
 }
