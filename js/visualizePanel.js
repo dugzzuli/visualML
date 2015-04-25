@@ -21,6 +21,7 @@ var currentIndexOfData = 0;
 var svg = d3.select("#board").append("svg")
 .attr("width", panelWidth+paddingRight+paddingLeft)
 .attr("height", panelHeight+paddingTop+paddingBottom)
+.attr("id", "plotPanel")
 //.on("mousedown", mousedown)
 //.on("mouseup", mouseup)
 .on("click", click);
@@ -92,6 +93,7 @@ function addNewPoint(p){
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("r", "5")
                 .attr("class", "dot label"+selectedClass)
+                .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
     }

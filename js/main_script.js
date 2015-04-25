@@ -51,4 +51,44 @@ $(function () {
 		var drop = $('<span class="caret"></span>');
 		$("#dropdownMenu2").append(drop);
 	});
+
+	$("#classifyButton").click(function () {
+			var url = "controllers/mainController.php";
+			var postData = {};
+			postData.Algorithm = "DecisionTree";
+			postData.inputData = [];
+			
+			$('#plotPanel > circle').each(function () {
+				//console.log(this);
+				pos = $(this).attr("transform");
+				pos = pos.substr(10);
+				pos = pos.substr(0,pos.length-1);
+				pos = pos.split(",");
+				posx = pos[0];
+				posy = pos[1];
+				label = $(this).attr("data-label");
+				data = {};
+				data.x = posx;
+				data.y = posy;
+				data.label = label;
+				data.predict = "U";
+				postData.inputData.push(data);
+			});
+			//console.log(postData);
+			// $.ajax({
+			// 	method: "POST",
+			// 	url: url,
+			// 	data: postData
+			// }).done(function (jsonReturnData) { 
+			// 	// Result handler
+			// 	returnData = JSON.parse(jsonReturnData);
+			// 	if (returnData.status == "error") {
+			// 		alert("Error");
+			// 	}
+			// });
+				
+			
+			
+		}
+	);
 })

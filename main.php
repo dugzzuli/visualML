@@ -171,7 +171,7 @@
 					<button type="button" class="btn btn-success pinpoint">Place</button>
 				</div>
 				<div class="col-md-2" id="compute">
-					<button type="button" class="btn btn-primary btn-block">Classify</button>
+					<button type="button" class="btn btn-primary btn-block" id="classifyButton">Classify</button>
 				</div>
 				<div class="col-md-2" id="adjustParameter">
 					<button type="button" class="btn btn-primary btn-block">Adjust Parameters</button>
