@@ -100,8 +100,11 @@
 				<div class="tab-content">
 			  		<div id="myTabContent" class="tab-content">
 				      	<div role="tabpanel" class="tab-pane fade in active" id="dropdown1" aria-labelledBy="dropdown1-tab">
-				        	<p>From wikipedia.com -- <a href="http://en.wikipedia.org/wiki/Decision_tree_learning" target="blank">Decision Tree Learning</a>
+				        	<p>[From wikipedia.com]</p>
 				        	<p><b class="topic">Decision tree learning</b> is a method commonly used in data mining. The goal is to create a model that predicts the value of a target variable based on several input variables. Each interior node corresponds to one of the input variables; there are edges to children for each of the possible values of that input variable. Each leaf represents a value of the target variable given the values of the input variables represented by the path from the root to the leaf.</p>
+				      		<img src="img/dt2.png" />
+				      		<img src="img/dt1.png" />
+				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Decision_tree_learning" target="blank">Decision Tree Learning</a></p>
 				      	</div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab">
 				        	<p>Neural Network, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
@@ -120,6 +123,25 @@
 					    </div>
 				    </div>
 				</div>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			  	<div class="modal-dialog">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			        		<label class="modal-title" id="myModalLabel">Decision Tree</label>
+			      		</div>
+				      	<div class="modal-body">
+				      		<div id="dtModal">
+				      			<h4 class="modalLabel">Minimum number of points for each leaf node</h4>
+    							<input type="text" class="form-control" id="exampleInputName2" placeholder="5">
+     			      		</div>				      		
+				    	</div>
+					    <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Save changes</button>
+					    </div>
+			    	</div>
+			    </div>
 			</div>
 			<div class="col-xs-12 greenFade" id="tooltab" >
 				<div class="col-md-3">
@@ -175,7 +197,7 @@
 					<button type="button" class="btn btn-primary btn-block">Classify</button>
 				</div>
 				<div class="col-md-2" id="adjustParameter">
-					<button type="button" class="btn btn-primary btn-block">Adjust Parameters</button>
+					<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Adjust Parameters</button>
 				</div>
 			</div>
 
