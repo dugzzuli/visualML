@@ -1,6 +1,7 @@
 $(function () {
 	$('.dropdown-toggle').dropdown();
 	$('#myTab a:last').tab('show');
+	$('.pinpoint').hide();
 
 	$(".toolbutton").click(function(){
 		if($(this).hasClass('current')){
@@ -9,6 +10,12 @@ $(function () {
 		else{
 			$(".toolbutton").removeClass('current');
 			$(this).addClass('current');
+		}
+		if($('.current').hasClass('pinbutton')){
+			$('.pinpoint').show();
+		}
+		else{
+			$('.pinpoint').hide();
 		}
 	});
 

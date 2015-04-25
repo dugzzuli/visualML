@@ -50,6 +50,8 @@
 
 #tooltab{
 	height:65px;
+	font-family: Helvetica;
+	padding-right: 5px;
 }
 
 .tool{
@@ -85,4 +87,16 @@
 
 #selectClass{
 	margin-top: 15px;
+	font-size: 15px;
 }
+
+.pp{
+	margin-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#compute, #adjustParameter{
+	margin-top: 15px;
+}
+

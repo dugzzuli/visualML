@@ -120,11 +120,11 @@
 			</div>
 			<div class="col-xs-12 greenFade" id="tooltab" >
 				<div class="col-md-3">
-					<div class="tool toolbutton">
-						<a><i class="fa fa-pencil"></i></a>
+					<div class="tool toolbutton pinbutton">
+						<a><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
 					</div>	
 					<div class="tool toolbutton">
-						<a><i class="fa fa-paint-brush"></i></a>
+						<a><i class="fa fa-pencil"></i></a>
 					</div>	
 					<div class="tool toolbutton">
 						<a><i class="fa fa-paint-brush"></i></a>
@@ -136,8 +136,8 @@
 						<a><i class="fa fa-file-o"></i></a>
 					</div>			
 				</div>
-				<div class="col-md-3" id="selectClass">
-					Class:
+				<div class="col-md-2" id="selectClass">
+					Class:&nbsp;
 					<div class="dropup">
 					  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
 					    	Select Class
@@ -153,14 +153,26 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-2">
-					3
+				<div class="col-md-1 pp">
+                    <div class="input-group pinpoint">
+					  	<span class="input-group-addon" id="px">X</span>
+					  	<input type="text" class="form-control">
+					</div>
 				</div>
-				<div class="col-md-2">
-					4
+				<div class="col-md-1 pp">
+					<div class="input-group pinpoint">
+					  	<span class="input-group-addon" id="py">Y</span>
+					  	<input type="text" class="form-control">
+					</div>
 				</div>
-				<div class="col-md-2">
-					5
+				<div class="col-md-1 pp">
+					<button type="button" class="btn btn-success pinpoint">Place</button>
+				</div>
+				<div class="col-md-2" id="compute">
+					<button type="button" class="btn btn-primary btn-block">Classify</button>
+				</div>
+				<div class="col-md-2" id="adjustParameter">
+					<button type="button" class="btn btn-primary btn-block">Adjust Parameters</button>
 				</div>
 			</div>
 
