@@ -18,7 +18,13 @@
 			<form class="col-md-6 col-md-offset-3" action="controllers/RegisterController.php" method="post">
 				<h1 class="text-center">Registration</h1>
 				<?php
-					session_start();
+					if(!isset($_SESSION)) 
+				    { 
+				        session_start(); 
+				    } 
+				    if(isset($_SESSION['username'])){
+						header("Location: index.php");
+					}
 					if(isset($_SESSION['message'])&&count($_SESSION['message'])>0){
 						foreach ($_SESSION['message'] as $message) {
 							if($message["type"]=="error") print '<div class="alert alert-danger" role="alert">'.$message["content"].'</div>';

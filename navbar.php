@@ -38,7 +38,7 @@
 								$content.='<ul class="dropdown-menu" role="menu">
 								            <li><a href="#">Edit Profile</a></li>
 								            <li class="divider"></li>
-								            <li><a href="#">Logout</a></li>
+								            <li><a href="Controllers/LogoutController.php">Logout</a></li>
 								        </ul>';
 								$content.='</li>';
 							}
