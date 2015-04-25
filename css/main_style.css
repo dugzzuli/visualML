@@ -1,7 +1,16 @@
+.navbar{
+	background-color: rgba(0,40,0,1);
+	background: -webkit-linear-gradient(rgb(0,40,0) 10%, black 90%); /* Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(rgb(0,40,0) 10%, black 90%); /* For Opera 11.6 to 12.0 */
+  	background: -moz-linear-gradient(rgb(0,40,0) 10%, black 90%); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(rgb(0,40,0) 10%, black 90%); /* Standard syntax */
+}
+
 #sidebar{
 	background-color: black;
+	color:white;
 	padding:0;
-	height:auto;
+	height:550px;
 	font-size: 16px;
 }
 
@@ -10,8 +19,9 @@
 	/*padding-left: 10px;*/
 }
 
-.board{
+#board{
 	color:black;
+	height:550px;
 }
 
 #sidebar #vmlLogo{
@@ -22,9 +32,57 @@
 }
 
 #myTab, .tab-content{
-	padding:10px;
+	padding:10px 10px 0px 10px;
+	border: black;
 }
+
+/*#myTab .dropdown-toggle{
+	background-color: rgb(0,40,0);
+}
+
+#myTab .dropdown-toggle .active{
+	background-color: white;
+}*/
 
 .dropdown-menu{
 	color: black;
+}
+
+#tooltab{
+	height:65px;
+}
+
+.tool{
+	width: 50px;
+	height: 50px;
+	background-color: #EEE;
+	border-style: solid;
+	border-width: 3px;
+	border-color: rgb(100,100,0);
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
+	padding-top: 5px;
+	margin-top:8px;
+	margin-right: 5px;
+	/*margin:auto 0;*/
+	-webkit-transition: box-shadow 0.1s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.1s;
+}
+
+.toolbutton a i{
+	text-decoration: black;
+}
+
+.current{
+    background-color: #B2FF99;
+    color:black;
+}
+
+.dropup{
+	display: inline-block;
+}
+
+#selectClass{
+	margin-top: 15px;
 }
