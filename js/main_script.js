@@ -1,6 +1,6 @@
 $(function () {
 	$('.dropdown-toggle').dropdown();
-	$('#myTab a:last').tab('show');
+	$('#myTab a:first').tab('show');
 	$('.pinpoint').hide();
 
 	$(".toolbutton").click(function(){
