@@ -31,7 +31,7 @@
 						<!-- <img src="img/function-green.png"/> -->						
 						<?php
 							if(isset($_SESSION['username'])){
-								print '<a href="#function">
+								print '<a href="main.php">
 										<div class="logo">';
 								print '<i class="fa fa-play-circle"></i>';
 								print '<span class="logoLabel">Start</span>';	

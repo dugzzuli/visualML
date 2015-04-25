@@ -34,7 +34,7 @@
 							        session_start(); 
 							    } 
 								if(isset($_SESSION['username'])){
-									print '<li><a href="#">Main Window</a></li>';
+									print '<li><a href="main.php">Main Window</a></li>';
 								}
 							?>		        
 				      	</ul>
@@ -51,11 +51,12 @@
 								$content.='<ul class="dropdown-menu" role="menu">
 								            <li><a href="#">Edit Profile</a></li>
 								            <li class="divider"></li>
-								            <li><a href="#">Logout</a></li>
+								            <li><a href="Controllers/LogoutController.php">Logout</a></li>
 								        </ul>';
 								$content.='</li>';
 							}
 							else{
+								header("Location: login.php");
 								$content.='<li><a href="register.php">Sign Up</a></li>';
 								$content.='<li><a href="login.php">Log in</a></li>';
 							}

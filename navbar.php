@@ -21,7 +21,7 @@
 							        session_start(); 
 							    } 
 								if(isset($_SESSION['username'])){
-									print '<li><a href="#">Main Window</a></li>';
+									print '<li><a href="main.php">Main Window</a></li>';
 								}
 							?>		        
 				      	</ul>

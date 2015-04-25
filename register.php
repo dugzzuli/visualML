@@ -49,7 +49,7 @@
 				</div>
 				
 				<div class="form-group col-lg-6">
-					<label>confirm Password</label>
+					<label>Confirm Password</label>
 					<input type="password" name="confirm_password" class="form-control" id="" value="">
 				</div>
 
