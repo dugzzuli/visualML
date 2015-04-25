@@ -81,17 +81,17 @@
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
-				        <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Regression<span class="caret"></span></a>
+				        <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop2-contents">Regression<span class="caret"></span></a>
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
-				          <li><a href="#dropdown3" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">Linear Regression</a></li>
-				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Regression Tree</a></li>
+				          <li><a href="#dropdown3" tabindex="-1" role="tab" id="dropdown3-tab" data-toggle="tab" aria-controls="dropdown1">Linear Regression</a></li>
+				          <li><a href="#dropdown4" tabindex="-1" role="tab" id="dropdown4-tab" data-toggle="tab" aria-controls="dropdown2">Regression Tree</a></li>
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
-						<a href="#" id="myTabDrop3" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Clustering<span class="caret"></span></a>
-				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
-				          <li><a href="#dropdown5" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">K-means</a></li>
-				          <li><a href="#dropdown6" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">DBSCAN</a></li>
+						<a href="#" id="myTabDrop3" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop3-contents">Clustering<span class="caret"></span></a>
+				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop3" id="myTabDrop3-contents">
+				          <li><a href="#dropdown5" tabindex="-1" role="tab" id="dropdown5-tab" data-toggle="tab" aria-controls="dropdown1">K-means</a></li>
+				          <li><a href="#dropdown6" tabindex="-1" role="tab" id="dropdown6-tab" data-toggle="tab" aria-controls="dropdown2">DBSCAN</a></li>
 				        </ul>
 				  	</li>
 				</ul>
