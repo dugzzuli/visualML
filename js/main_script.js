@@ -2,7 +2,9 @@ $(function () {
 	$('.dropdown-toggle').dropdown();
 	$('#myTab a:first').tab('show');
 	$('.pinpoint').hide();
-
+	$('.mpara').hide();
+	$('.modalDT').show();
+	var rightModal = "modalDT";
 	$(".toolbutton").click(function(){
 		if($(this).hasClass('current')){
 			$(this).removeClass('current');
@@ -101,8 +103,21 @@ $(function () {
 				// 	console.log(returnData.result);
 				// }
 			});
-				
-			
-			
+		}
+	);
+
+	$("#sidebar .dropdown-submenu").click(function(){
+		rightModal = $(this).data('modal');
+		console.log(rightModal);
+		$('.mpara').hide();
+		$('.'+rightModal).show();
+	});
+
+	$("#setDefault").click(function(){
+		//console.log(rightModal);
+		//console.log($('.'+rightModal).children('input'));
+		$.each($('.'+rightModal).children('input'),function(k,v){
+			v.value=v.defaultValue;
+		});
 	});
 })
