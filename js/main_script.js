@@ -80,9 +80,12 @@ $(function () {
 			postData.inputData = [];
 			if(rightModal=="modalDT"){
 				postData.minpts = $('#modalDT1').val();
+			}
+			else if(rightModal=="modalKM"){
+				postData.k = $('#modalKM1').val();
 			}			
 			
-			$('#plotPanel > circle').each(function () {
+			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);
 				pos = $(this).attr("coordinate");
 				pos = pos.substr(10);

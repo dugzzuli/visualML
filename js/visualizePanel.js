@@ -96,7 +96,7 @@ function addNewPoint(p){
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
-                .attr("class", "dot label"+selectedClass)
+                .attr("class", "datadot dot label"+selectedClass)
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
@@ -111,7 +111,7 @@ function addNewPointWithPosition(x, y){
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
-                .attr("class", "dot label"+selectedClass)
+                .attr("class", "datadot dot label"+selectedClass)
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);

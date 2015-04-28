@@ -44,7 +44,7 @@ function ll_kmeans($xs, $k)
       $continue = ($old_centroids == $centroids);
    } while($continue);
 
-   return $belongs_to;
+   return [$belongs_to,$centroids];
 }
 
 // repositions the centroids to the average of all their member elements

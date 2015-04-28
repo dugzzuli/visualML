@@ -141,12 +141,16 @@
 				      	<div class="modal-body">
 				      		<div class= "modalDT mpara">
 				      			<h4 class="modalLabel">Minimum number of points for each leaf node</h4>
-    							<input type="text" class="form-control" id="modalDT1" value="5" data-default="5">
+    							<input type="text" class="form-control" id="modalDT1" value="5">
     							<!-- <input type="text" class="form-control" id="modalDT2" value="12" data-default="12"> -->
      			      		</div>	
      			      		<div class= "modalNN mpara">
 				      			<h4 class="modalLabel">Minimum number of points for each nn</h4>
-    							<input type="text" class="form-control" id="modalNN1" value="10" data-default="10">
+    							<input type="text" class="form-control" id="modalNN1" value="10">
+     			      		</div>	
+     			      		<div class= "modalKM mpara">
+				      			<h4 class="modalLabel">Number of clusters (less than 10)</h4>
+    							<input type="text" class="form-control" id="modalKM1" value="5">
      			      		</div>				      		
 				    	</div>
 					    <div class="modal-footer">
