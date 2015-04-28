@@ -33,6 +33,7 @@ $(function () {
 		if($('.current').hasClass('brushbutton')){
 			plotOption = 3;
 			cursorForPlot();
+			console.log(plotOption);
 		}
 	});
 
