@@ -156,11 +156,10 @@ var drawPointByDrag = null;
 
 function mousedown(){
     var p = this;
-    //console.log("mousedown");
+    console.log("mousedown");
     if(isPlot && plotOption == 2){
         if(selectedClass == null)   window.alert("Please select class");
         else{
-            addNewPoint(this);
             timer_drawpoint = Date.now();
             svg.on("mousemove", mousemovePlot2);
         }
@@ -170,8 +169,8 @@ function mousedown(){
 
 function mousemovePlot2(){
     if(Date.now() - timer_drawpoint>=100){
-        addNewPoint(this);
         timer_drawpoint = Date.now();
+        addNewPoint(this);
     }
 
 }
@@ -186,9 +185,14 @@ function mouseup(){
     
 }
 
-function cursorForPlot3(){
-    if(isPlot && plotOption == 3){
-
+function cursorForPlot(){
+    if(isPlot){
+        if(plotOption == 1 || plotOption == 2){
+            svg.style("cursor","crosshair");
+        }
+    }
+    else{
+        svg.style("cursor","default");
     }
 }
 
