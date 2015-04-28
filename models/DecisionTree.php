@@ -6,7 +6,7 @@ function entropy($count){
 	$max = 0;
 	foreach($count as $key=>$value){
 		if($key!='all' && $value!=0){
-			$p = $value/array_sum($count);
+			$p = $value/$count['all'];
 			$entropy+= -$p*log($p,2);
 			if($value>$max){
 				$maxClass = $key;
@@ -49,22 +49,27 @@ function decisionTree($data,$minpts){
 	}
 	$chunk = [[0,1000,0,1000,array_keys($aggStart,max($aggStart))[0]]];
  	$finish= [];
+ 	$debug = [];
  	while(count($chunk)!=0){
  		$aChunk = array_pop($chunk);
  		$aggregateArray = aggregate($data,$aChunk);
+ 		array_push($debug, [$aggregateArray,$aChunk]);
  		if($aggregateArray['all']<=$minpts) array_push($finish, $aChunk);
  		else{
  			$oldEntropy = entropy($aggregateArray);
+ 			array_push($debug, [$aggregateArray,$aChunk,$oldEntropy]);
  			$maxInfogain = 0;
  			$split = ['x',0,1,1];
- 			for($x = $aChunk[0]+1;$x<$aChunk[1];$x++){
+ 			for($x = $aChunk[0]+1;$x<$aChunk[1];$x+=1){
  				$chunkLeft = $aChunk;
  				$chunkLeft[1] = $x;
  				$aggLeft = aggregate($data,$chunkLeft);
+ 				if($aggLeft['all']<$minpts) continue;
  				$entLeft = entropy($aggLeft);
  				$chunkRight = $aChunk;
  				$chunkRight[0] = $x;
  				$aggRight = aggregate($data,$chunkRight);
+ 				if($aggRight['all']<$minpts) continue;
  				$entRight = entropy($aggRight);
  				$infoGain = $oldEntropy[0] - (($aggLeft['all']/$aggregateArray['all'])*$entLeft[0]+($aggRight['all']/$aggregateArray['all'])*$entRight[0]);
  				if($infoGain>$maxInfogain){
@@ -72,14 +77,16 @@ function decisionTree($data,$minpts){
  					$maxInfogain = $infoGain;
  				}
  			}
- 			for($y = $aChunk[2]+1;$y<$aChunk[3];$y++){
+ 			for($y = $aChunk[2]+1;$y<$aChunk[3];$y+=1){
  				$chunkLeft = $aChunk;
  				$chunkLeft[3] = $y;
  				$aggLeft = aggregate($data,$chunkLeft);
+ 				if($aggLeft['all']<$minpts) continue;
  				$entLeft = entropy($aggLeft);
  				$chunkRight = $aChunk;
  				$chunkRight[2] = $y;
  				$aggRight = aggregate($data,$chunkRight);
+ 				if($aggRight['all']<$minpts) continue;
  				$entRight = entropy($aggRight);
  				$infoGain = $oldEntropy[0] - (($aggLeft['all']/$aggregateArray['all'])*$entLeft[0]+($aggRight['all']/$aggregateArray['all'])*$entRight[0]);
  				if($infoGain>$maxInfogain){
@@ -120,7 +127,8 @@ function decisionTree($data,$minpts){
 	}
 
 	return ['data'=>$allData,
-			'boundary'=>$finish];
+			'boundary'=>$finish,
+			'debug'=>$debug];
 }
 
 ?>
