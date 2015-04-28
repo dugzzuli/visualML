@@ -83,7 +83,11 @@ $(function () {
 			}
 			else if(rightModal=="modalKM"){
 				postData.k = $('#modalKM1').val();
-			}			
+			}	
+			else if(rightModal=="modalDB"){
+				postData.eps = $('#modalDB1').val();
+				postData.minPts = $('#modalDB2').val();
+			}		
 			
 			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);

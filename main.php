@@ -117,7 +117,19 @@
 					        <p>Regression Tree, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledBy="home-tab" data-modal="modalKM">
-					        <p>K-means, probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+					        <p>[From Data Mining By Ian H. Witten & Eibe Frank]</p>
+					        <p>The classic clustering technique is called <b class="topic">K-means</b>. First, you specify in advance
+how many clusters are being sought: this is the parameter k. Then k points are
+chosen at random as cluster centers. All instances are assigned to their closest
+cluster center according to the ordinary Euclidean distance metric. Next the centroid,
+or mean, of the instances in each cluster is calculated—this is the “means”
+part. These centroids are taken to be new center values for their respective clusters.
+Finally, the whole process is repeated with the new cluster centers. Iteration
+continues until the same points are assigned to each cluster in consecutive
+rounds, at which stage the cluster centers have stabilized and will remain the
+same forever.</p>
+							<img src="img/km1.png" />
+							<p>Read More -- <a href="en.wikipedia.org/wiki/K-means_clustering" target="blank">K-means Clustering</a></p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledBy="profile-tab" data-modal="modalDB">
 					        <p>DBSCAN, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
@@ -151,6 +163,12 @@
      			      		<div class= "modalKM mpara">
 				      			<h4 class="modalLabel">Number of clusters (less than 10)</h4>
     							<input type="text" class="form-control" id="modalKM1" value="5">
+     			      		</div>	
+     			      		<div class= "modalDB mpara">
+				      			<h4 class="modalLabel">EPS (Epsilon)</h4>
+    							<input type="text" class="form-control" id="modalDB1" value="20">
+    							<h4 class="modalLabel">MinPts</h4>
+    							<input type="text" class="form-control" id="modalDB2" value="3">
      			      		</div>				      		
 				    	</div>
 					    <div class="modal-footer">

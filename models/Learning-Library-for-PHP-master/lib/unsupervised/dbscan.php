@@ -18,7 +18,7 @@ function ll_dbscan($data, $e, $minimumPoints=10) {
 
       $regionPoints = _ll_points_in_region(array($index=>$datum), $data, $e);
       if(count($regionPoints) >= $minimumPoints) {
-         $clusters[] = _ll_expand_cluster(array($index=>$datum), $regionPoints, $e, $minimumPoints, &$visited);
+         $clusters[] = _ll_expand_cluster(array($index=>$datum), $regionPoints, $e, $minimumPoints, $visited);
       }
    }
    
