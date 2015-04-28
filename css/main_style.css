@@ -1,3 +1,7 @@
+body{
+	background-color: black;
+}
+
 .navbar{
 	background-color: rgba(0,40,0,1);
 	background: -webkit-linear-gradient(rgb(0,40,0) 10%, black 90%); /* Safari 5.1 to 6.0 */

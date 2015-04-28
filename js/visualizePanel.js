@@ -15,6 +15,8 @@ var maxY = 1000;
 var dataSet = [];
 var currentIndexOfData = 0;
 
+var timer_drawpoint = 0;
+
 
 
 // Create the SVG
@@ -22,8 +24,8 @@ var svg = d3.select("#board").append("svg")
 .attr("width", panelWidth+paddingRight+paddingLeft)
 .attr("height", panelHeight+paddingTop+paddingBottom)
 .attr("id", "plotPanel")
-//.on("mousedown", mousedown)
-//.on("mouseup", mouseup)
+.on("mousedown", mousedown)
+.on("mouseup", mouseup)
 .on("click", click);
 
 // Add a background
@@ -91,12 +93,14 @@ function addNewPoint(p){
         console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
         svg.append("circle")
                 .attr("transform", "translate(" + x + "," + y + ")")
+                .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
                 .attr("class", "dot label"+selectedClass)
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
     }
+   
 }
 
 function click() {
@@ -110,19 +114,21 @@ function click() {
     //     y: point[1]
     // };
     if(isPlot){
-        if(selectedClass == null)   window.alert("Please select class");
-        else{
-            if (plotOption == 1) {
+        if (plotOption == 1) {
+            if(selectedClass == null)   window.alert("Please select class");
+            else{
                 //plot a point
                 // Append a new point
                 addNewPoint(this);
                 console.log(this);
             }
-            else if(plotOption == 3){
-                //plot point of line
-
-            }
         }
+        else if(plotOption == 3){
+            //plot point of line
+
+        }
+        
+        
     }
     
 }
@@ -137,7 +143,8 @@ function dragmove(d) {
     if(x >= paddingLeft + panelWidth)    x = paddingLeft + panelWidth - 0.007;
     if(y < paddingTop)  y = paddingTop + 0.004;
     if(y >= paddingTop + panelHeight)    y = paddingTop + panelHeight;
-    d3.select(this).attr("transform", "translate(" + x + "," + y + ")");
+    d3.select(this).attr("transform", "translate(" + x + "," + y + ")")
+                    .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")");
     console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
 }
 
@@ -145,21 +152,44 @@ var drawPointByDrag = null;
 
 function mousedown(){
     var p = this;
-    console.log("mousedown");
+    //console.log("mousedown");
     if(isPlot && plotOption == 2){
-        drawPointByDrag = setInterval(function(){ 
-                                        console.log("plot");
-                                        console.log(svg);
-                                        addNewPoint(svg);
-                                    }, 500);
+        if(selectedClass == null)   window.alert("Please select class");
+        else{
+            addNewPoint(this);
+            timer_drawpoint = Date.now();
+            svg.on("mousemove", mousemovePlot2);
+        }
     }
+    
+}
+
+function mousemovePlot2(){
+    if(Date.now() - timer_drawpoint>=100){
+        addNewPoint(this);
+        timer_drawpoint = Date.now();
+    }
+
 }
 
 function mouseup(){
     console.log("mouseup");
-    if(plotOption == 2){
-        clearInterval(drawPointByDrag);
+    if(isPlot && plotOption == 2){
+        //addNewPoint(this);
+        timer_drawpoint = 0;
+        svg.on("mousemove", null);
     }
+    
+}
+
+function cursorForPlot3(){
+    if(isPlot && plotOption == 3){
+        
+    }
+}
+
+function mousemovePlot3(){
+
 }
 
 $('#option #class1').click(function(){

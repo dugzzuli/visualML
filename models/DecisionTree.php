@@ -36,15 +36,15 @@ function aggregate($data,$aChunk){
 }
 
 function decisionTree($data,$minpts){
-	$allData = clone($data);
+	$allData = $data;
 	$count = count($data);
 	$aggStart = ['A'=>0, 'B'=>0, 'C'=>0, 'D'=>0, 'E'=>0];
-	foreach($i=0;$i<$count;$i++){
-		if($aPoint['label']=='U'){
+	for($i=0;$i<$count;$i+=1){
+		if($data[$i]['label']=='U'){
 		 	unset($data[$i]);
 		}
 		else{
-			$aggStart[$aPoint['label']]+=1;
+			$aggStart[$data[$i]['label']]+=1;
 		}
 	}
 	$chunk = [[0,1000,0,1000,array_keys($aggStart,max($aggStart))[0]]];
@@ -58,11 +58,11 @@ function decisionTree($data,$minpts){
  			$maxInfogain = 0;
  			$split = ['x',0,1,1];
  			for($x = $aChunk[0]+1;$x<$aChunk[1];$x++){
- 				$chunkLeft = clone($aChunk);
+ 				$chunkLeft = $aChunk;
  				$chunkLeft[1] = $x;
  				$aggLeft = aggregate($data,$chunkLeft);
  				$entLeft = entropy($aggLeft);
- 				$chunkRight = clone($aChunk);
+ 				$chunkRight = $aChunk;
  				$chunkRight[0] = $x;
  				$aggRight = aggregate($data,$chunkRight);
  				$entRight = entropy($aggRight);
@@ -73,11 +73,11 @@ function decisionTree($data,$minpts){
  				}
  			}
  			for($y = $aChunk[2]+1;$y<$aChunk[3];$y++){
- 				$chunkLeft = clone($aChunk);
+ 				$chunkLeft = $aChunk;
  				$chunkLeft[3] = $y;
  				$aggLeft = aggregate($data,$chunkLeft);
  				$entLeft = entropy($aggLeft);
- 				$chunkRight = clone($aChunk);
+ 				$chunkRight = $aChunk;
  				$chunkRight[2] = $y;
  				$aggRight = aggregate($data,$chunkRight);
  				$entRight = entropy($aggRight);
@@ -89,15 +89,15 @@ function decisionTree($data,$minpts){
  			}
  			if($maxInfogain==0) array_push($finish, $aChunk);
  			if($split[0]=='x'){
- 				$chunkLeft = clone($aChunk);
+ 				$chunkLeft = $aChunk;
  				$chunkLeft[1] = $split[1]; 				
- 				$chunkRight = clone($aChunk);
+ 				$chunkRight = $aChunk;
  				$chunkRight[0] = $split[1]; 	 						
  			}
  			else{
- 				$chunkLeft = clone($aChunk);
+ 				$chunkLeft = $aChunk;
  				$chunkLeft[3] = $split[1];
- 				$chunkRight = clone($aChunk);
+ 				$chunkRight = $aChunk;
  				$chunkRight[2] = $split[1];
  			}
  			$chunkLeft[4] = $split[2][1];
@@ -108,7 +108,9 @@ function decisionTree($data,$minpts){
 			else array_push($chunk, $chunkRight);
 		}
 	}
-	foreach ($allData as $aPoint) {
+
+	foreach ($allData as &$aPoint) {
+		$aPoint['predict'] = "U";
 		foreach($finish as $aChunk){
 			if(isIn($aPoint,$aChunk)){
 				$aPoint['predict'] = $aChunk[4];
@@ -116,6 +118,7 @@ function decisionTree($data,$minpts){
 			}
 		}
 	}
+
 	return ['data'=>$allData,
 			'boundary'=>$finish];
 }

@@ -148,10 +148,10 @@
 					<div class="tool toolbutton pinbutton">
 						<a><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></a>
 					</div>	
-					<div class="tool toolbutton">
+					<div class="tool toolbutton pencilbutton">
 						<a><i class="fa fa-pencil"></i></a>
 					</div>	
-					<div class="tool toolbutton">
+					<div class="tool toolbutton brushbutton">
 						<a><i class="fa fa-paint-brush"></i></a>
 					</div>		
 					<div class="tool toolclear">

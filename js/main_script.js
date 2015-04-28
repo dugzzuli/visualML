@@ -12,6 +12,8 @@ $(function () {
 			$(".toolbutton").removeClass('current');
 			$(this).addClass('current');
 			isPlot = true;
+			svg.on("mousemove", null);
+			console.log(isPlot);
 		}
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
@@ -19,6 +21,14 @@ $(function () {
 		}
 		else{
 			$('.pinpoint').hide();
+		}
+		if($('.current').hasClass('pencilbutton')){
+			plotOption = 2;
+			console.log(plotOption);
+		}
+		if($('.current').hasClass('brushbutton')){
+			plotOption = 3;
+			cursorForPlot3();
 		}
 	});
 
@@ -57,10 +67,11 @@ $(function () {
 			var postData = {};
 			postData.Algorithm = "DecisionTree";
 			postData.inputData = [];
+			postData.minpts = 3;
 			
 			$('#plotPanel > circle').each(function () {
 				//console.log(this);
-				pos = $(this).attr("transform");
+				pos = $(this).attr("coordinate");
 				pos = pos.substr(10);
 				pos = pos.substr(0,pos.length-1);
 				pos = pos.split(",");
@@ -74,21 +85,24 @@ $(function () {
 				data.predict = "U";
 				postData.inputData.push(data);
 			});
-			//console.log(postData);
-			// $.ajax({
-			// 	method: "POST",
-			// 	url: url,
-			// 	data: postData
-			// }).done(function (jsonReturnData) { 
-			// 	// Result handler
-			// 	returnData = JSON.parse(jsonReturnData);
-			// 	if (returnData.status == "error") {
-			// 		alert("Error");
-			// 	}
-			// });
+			console.log(postData);
+			$.ajax({
+				method: "POST",
+				url: url,
+				data: postData
+			}).done(function (jsonReturnData) { 
+				// Result handler
+				console.log(jsonReturnData);
+				// returnData = JSON.parse(jsonReturnData);
+				// if (returnData.status == "error") {
+				//  	alert("Error");
+				// }
+				// else{
+				// 	console.log(returnData.result);
+				// }
+			});
 				
 			
 			
-		}
-	);
+	});
 })
