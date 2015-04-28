@@ -10,16 +10,17 @@ $(function () {
 		if($(this).hasClass('current')){
 			$(this).removeClass('current');
 			isPlot = false;
+			cursorForPlot();
 		}
 		else{
 			$(".toolbutton").removeClass('current');
 			$(this).addClass('current');
 			isPlot = true;
-			svg.on("mousemove", null);
 			console.log(isPlot);
 		}
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
+			cursorForPlot();
 			$('.pinpoint').show();
 		}
 		else{
@@ -27,11 +28,13 @@ $(function () {
 		}
 		if($('.current').hasClass('pencilbutton')){
 			plotOption = 2;
+			cursorForPlot();
 			console.log(plotOption);
 		}
 		if($('.current').hasClass('brushbutton')){
 			plotOption = 3;
-			cursorForPlot3();
+			cursorForPlot();
+			console.log(plotOption);
 		}
 	});
 

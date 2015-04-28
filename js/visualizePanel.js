@@ -16,6 +16,7 @@ var dataSet = [];
 var currentIndexOfData = 0;
 
 var timer_drawpoint = 0;
+var plot3_radius = 50;
 
 
 
@@ -103,6 +104,20 @@ function addNewPoint(p){
    
 }
 
+function addNewPointWithPosition(x, y){
+    if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
+        console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
+        svg.append("circle")
+                .attr("transform", "translate(" + x + "," + y + ")")
+                .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
+                .attr("r", "5")
+                .attr("class", "dot label"+selectedClass)
+                .attr("data-label",""+selectedClass)
+                .style("cursor", "pointer")
+                .call(drag);
+    }
+}
+
 function clearAllDataPoint(){
     svg.selectAll("circle").remove();
 }
@@ -128,13 +143,25 @@ function click() {
             }
         }
         else if(plotOption == 3){
-            //plot point of line
-
+            //plot random point in range
+            if(selectedClass == null)   window.alert("Please select class");
+            else{
+                var point = d3.mouse(this);
+                var x = point[0];
+                var y = point[1];
+                num_point = 0;
+                while(num_point < 10){
+                    randx = (Math.random() * (plot3_radius * 2 + 1)) + (x - plot3_radius);
+                    randy = (Math.random() * (plot3_radius * 2 + 1)) + (y - plot3_radius);
+                    if(Math.pow((randx - x), 2) + Math.pow((randy - y), 2) <= plot3_radius*plot3_radius && randx >= paddingLeft && randx < paddingLeft+panelWidth && randy > paddingTop && randy <= paddingTop+panelHeight){
+                        addNewPointWithPosition(randx,randy);
+                        num_point += 1;
+                    }
+                    
+                }
+            }
         }
-        
-        
     }
-    
 }
 
 // Define drag behavior
@@ -156,22 +183,20 @@ var drawPointByDrag = null;
 
 function mousedown(){
     var p = this;
-    //console.log("mousedown");
+    console.log("mousedown");
     if(isPlot && plotOption == 2){
         if(selectedClass == null)   window.alert("Please select class");
         else{
-            addNewPoint(this);
             timer_drawpoint = Date.now();
             svg.on("mousemove", mousemovePlot2);
         }
     }
-    
 }
 
 function mousemovePlot2(){
     if(Date.now() - timer_drawpoint>=100){
-        addNewPoint(this);
         timer_drawpoint = Date.now();
+        addNewPoint(this);
     }
 
 }
@@ -179,21 +204,33 @@ function mousemovePlot2(){
 function mouseup(){
     console.log("mouseup");
     if(isPlot && plotOption == 2){
-        //addNewPoint(this);
-        timer_drawpoint = 0;
         svg.on("mousemove", null);
-    }
-    
+        timer_drawpoint = 0;
+    }   
 }
 
-function cursorForPlot3(){
-    if(isPlot && plotOption == 3){
-
+function cursorForPlot(){
+    svg.select("#circleRandomPlot").remove();
+    svg.on("mousemove", null);
+    svg.on("mouseout", null);
+    svg.style("cursor","default");
+    if(isPlot){
+        svg.style("cursor","crosshair");
+        if(plotOption == 3){
+            svg.append("circle")
+                .attr("transform", "translate(" + 0 + "," + 0 + ")")
+                .attr("r", ""+plot3_radius)
+                .attr("id","circleRandomPlot")
+            svg.on("mousemove", mousemove_circle);
+        }
     }
 }
 
-function mousemovePlot3(){
-
+function mousemove_circle(){
+    var point = d3.mouse(this);
+    var x = point[0];
+    var y = point[1];
+    svg.select("#circleRandomPlot").attr("transform", "translate(" + x + "," + y + ")");
 }
 
 $('#option #class1').click(function(){
