@@ -75,7 +75,7 @@ $(function () {
 			var postData = {};
 			postData.Algorithm = "DecisionTree";
 			postData.inputData = [];
-			postData.minpts = 3;
+			postData.minpts = $('#modalDT1').val();
 			
 			$('#plotPanel > circle').each(function () {
 				//console.log(this);
