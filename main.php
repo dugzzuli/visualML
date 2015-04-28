@@ -168,7 +168,7 @@
 					<div class="tool toolclear">
 						<a><i class="fa fa-undo"></i></a>
 					</div>
-					<div class="tool toolclear">
+					<div class="tool toolclear clearbutton">
 						<a><i class="fa fa-file-o"></i></a>
 					</div>			
 				</div>

@@ -103,6 +103,10 @@ function addNewPoint(p){
    
 }
 
+function clearAllDataPoint(){
+    svg.selectAll("circle").remove();
+}
+
 function click() {
     // Ignore the click event if it was suppressed
     if (d3.event.defaultPrevented) return;
@@ -184,7 +188,7 @@ function mouseup(){
 
 function cursorForPlot3(){
     if(isPlot && plotOption == 3){
-        
+
     }
 }
 
