@@ -116,18 +116,31 @@ function decisionTree($data,$minpts){
 		}
 	}
 
+	$correctClassify = 0;
+
 	foreach ($allData as &$aPoint) {
 		$aPoint['predict'] = "U";
 		foreach($finish as $aChunk){
 			if(isIn($aPoint,$aChunk)){
 				$aPoint['predict'] = $aChunk[4];
+				if($aPoint['predict']==$aPoint['label']) $correctClassify += 1;
 				break;
 			}
 		}
 	}
 
+	$results = [];
+	$results['Algorithm'] = 'Decision Tree (ID3)';
+	$results['Total Testing Cases'] = count($allData)-count($data);
+	$results['Total Training Cases'] = count($data);
+	$results['Classify Training Case Correctly'] = $correctClassify;
+	$results['Classify Training Case Accuracy'] = number_format($correctClassify*100/count($data),2)."%";
+
+
+
 	return ['data'=>$allData,
 			'boundary'=>$finish,
+			'results'=>$results,
 			'debug'=>$debug];
 }
 

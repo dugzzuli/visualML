@@ -2,6 +2,7 @@ $(function () {
 	$('.dropdown-toggle').dropdown();
 	$('#myTab a:first').tab('show');
 	$('.pinpoint').hide();
+	$(".loader").hide();
 	$('.mpara').hide();
 	$('.modalDT').show();
 	var rightModal = "modalDT";
@@ -69,11 +70,14 @@ $(function () {
 	});
 
 	$("#classifyButton").click(function () {
+			$(".loader").show();
 			var url = "controllers/mainController.php";
 			var postData = {};
-			postData.Algorithm = "DecisionTree";
+			postData.Algorithm = rightModal;
 			postData.inputData = [];
-			postData.minpts = $('#modalDT1').val();
+			if(rightModal=="modalDT"){
+				postData.minpts = $('#modalDT1').val();
+			}			
 			
 			$('#plotPanel > circle').each(function () {
 				//console.log(this);
@@ -99,6 +103,27 @@ $(function () {
 			}).done(function (jsonReturnData) { 
 				// Result handler
 				console.log(jsonReturnData);
+				returnData = JSON.parse(jsonReturnData);
+				results = returnData.result.results;
+				resultHTML = '<table class="table">';
+				console.log(results);
+				for(var key in results){
+					console.log(key);
+					resultHTML += '<tr>';
+					resultHTML += '<td>';
+					resultHTML += key;
+					resultHTML += '</td>';
+					resultHTML += '<td>';
+					resultHTML += results[key];
+					resultHTML += '</td>';
+					resultHTML += '</tr>';
+				}
+				//resultHTML += '<tr><td></td><td></td></tr>';
+				resultHTML += '</table>';
+				var resultContent = $(resultHTML);
+				$('#results').empty();
+				$('#results').append(resultContent);
+				$(".loader").hide();	
 				// returnData = JSON.parse(jsonReturnData);
 				// if (returnData.status == "error") {
 				//  	alert("Error");
