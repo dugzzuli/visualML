@@ -34,6 +34,10 @@ $(function () {
 		}
 	});
 
+	$(".clearbutton").click(function(){
+		clearAllDataPoint();
+	});
+
 	$(".aClass").click(function(){
 		var changedText = $(this).text()+' ';
 		var colorPoint = $('<i class="fa fa-circle" style="color:red;"></i>');
