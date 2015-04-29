@@ -202,21 +202,23 @@ same forever.</p>
 					</div>			
 				</div>
 				<div class="col-md-2" id="selectClass">
-					Class:&nbsp;
-					<div class="dropup">
-					  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
-					    	<i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a>
-					    	<span class="caret"></span>
-					  	</button>
-					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="selectClassMenu">
-						    <li role="presentation"><a class="aClass CA" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a></li>
-						    <li role="presentation"><a class="aClass CB" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:green;"></i>&nbsp;B</a></li>
-						    <li role="presentation"><a class="aClass CC" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:blue;"></i>&nbsp;C</a></li>
-						    <li role="presentation"><a class="aClass CD" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:orange;"></i>&nbsp;D</a></li>
-						    <li role="presentation"><a class="aClass CE" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:purple;"></i>&nbsp;E</a></li>
-						    <li role="presentation"><a class="aClass CU" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:grey;"></i>&nbsp;Unknown</a></li>
-						</ul>
-					</div>
+					<div id="selectClassPanel">
+						Class:&nbsp;
+						<div class="dropup">
+						  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+						    	<i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a>
+						    	<span class="caret"></span>
+						  	</button>
+						  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="selectClassMenu">
+							    <li role="presentation"><a class="aClass CA" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a></li>
+							    <li role="presentation"><a class="aClass CB" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:green;"></i>&nbsp;B</a></li>
+							    <li role="presentation"><a class="aClass CC" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:blue;"></i>&nbsp;C</a></li>
+							    <li role="presentation"><a class="aClass CD" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:orange;"></i>&nbsp;D</a></li>
+							    <li role="presentation"><a class="aClass CE" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:purple;"></i>&nbsp;E</a></li>
+							    <li role="presentation"><a class="aClass CU" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:grey;"></i>&nbsp;Unknown</a></li>
+							</ul>
+						</div>
+					</div>					
 				</div>
 				<div class="col-md-1 pp">
                     <div class="input-group pinpoint">
@@ -232,12 +234,14 @@ same forever.</p>
 				</div>
 				<div class="col-md-1 pp">
 					<div class="pinpoint">
-						<button type="button" class="btn btn-default" id="addPoint">+</button>
+						<button type="button" class="btn btn-default" id="addPoint">
+							<i class="fa fa-plus"></i>
+						</button>
 						<button type="button" class="btn btn-success" id="placePoint">Place</button>
 					</div>					
 				</div>
 				<div class="col-md-2" id="compute">
-					<button type="button" class="btn btn-primary btn-block" id="classifyButton">Classify</button>
+					<button type="button" class="btn btn-primary btn-block" id="classifyButton">Run</button>
 				</div>
 				<div class="col-md-2" id="adjustParameter">
 					<button type="button" class="btn btn-primary btn-block" id="adjustPara" data-toggle="modal" data-target="#myModal">Adjust Parameters</button>

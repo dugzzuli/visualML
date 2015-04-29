@@ -154,6 +154,10 @@ $(function () {
 		console.log(rightModal);
 		$('.mpara').hide();
 		$('.'+rightModal).show();
+		$('#selectClassPanel').show();
+		if(rightModal=="modalKM" || rightModal=="modalDB" || rightModal=="modalLR" || rightModal=="modalRT"){
+			$('#selectClassPanel').hide();
+		}
 	});
 
 	$("#setDefault").click(function(){
