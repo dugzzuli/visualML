@@ -16,8 +16,8 @@ function DTResult(boundary, datadot){
 }
 
 function DTPlotResultData(data){
-    var x = DataToPixelScaleX(data.x);
-    var y = DataToPixelScaleY(data.y);
+    var x = dataToPixelScaleX(data.x);
+    var y = dataToPixelScaleY(data.y);
     var predictClassCSS = "";
     if(data.label == "U")	predictClassCSS += " unknownPredict"; 
     else if(data.label != data.predict)	predictClassCSS += " incorrectPredict";

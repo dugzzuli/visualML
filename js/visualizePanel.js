@@ -1,5 +1,3 @@
-var isPlot = false;
-var plotOption = 1;
 var panelWidth = $("#board").width()-60;
 var panelHeight = 500;
 var paddingBottom = 30;
@@ -13,6 +11,9 @@ var selectedClass = "A";
 var maxX = 1000;
 var maxY = 1000;
 
+var isPlot = false;
+var plotOption = 1;
+var plotOption1_addPoint = false;
 var timer_drawpoint = 0;
 var plot3_radius = 50;
 
@@ -104,13 +105,13 @@ function addNewPoint(p){
 }
 
 function addNewPointWithPositionScale(x, y){
-    addNewPointWithPosition(dataToPixelScaleX(x), dataToPixelScaleY(y));    
+    return addNewPointWithPosition(dataToPixelScaleX(x), dataToPixelScaleY(y));    
 }
 
 function addNewPointWithPosition(x, y){
     if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
         if(plotOption == 1) updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
-        var newPoint = svg.append("circle")
+        return newPoint = svg.append("circle")
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
@@ -120,6 +121,12 @@ function addNewPointWithPosition(x, y){
                 .style("cursor", "pointer")
                 .call(drag);
     }
+}
+
+function addNewPointOption1Place(x, y){
+    var newPoint = addNewPointWithPositionScale(x, y);
+    historyTemp = [newPoint];
+    historyForUndo.push(historyTemp);
 }
 
 function clearAllDataPoint(){
@@ -168,6 +175,7 @@ function click() {
                 //plot a point
                 // Append a new point
                 var newPoint = addNewPoint(this);
+                if(plotOption1_addPoint)    changePlotOption1ToDefault();
                 historyTemp = [newPoint];
                 historyForUndo.push(historyTemp);
             }
@@ -209,6 +217,7 @@ function dragmove(d) {
     d3.select(this).attr("transform", "translate(" + x + "," + y + ")")
                     .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")");
     updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
+    if(plotOption1_addPoint)    changePlotOption1ToDefault();
 }
 
 var drawPointByDrag = null;
