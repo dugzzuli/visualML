@@ -5,6 +5,7 @@ $(function () {
 	$(".loader").hide();
 	$('.mpara').hide();
 	$('.modalDT').show();
+	$('#placePoint').hide();
 	var rightModal = "modalDT";
 	$(".toolbutton").click(function(){
 		if($(this).hasClass('current')){
@@ -161,6 +162,32 @@ $(function () {
 		$.each($('.'+rightModal).children('input'),function(k,v){
 			v.value=v.defaultValue;
 		});
+	});
+
+	$('#addPoint').click(function(){
+		$(this).hide();
+		$('#placePoint').show();
+		$('.pinpoint input').val('');
+	});
+
+	$('#placePoint').click(function(){
+		px = $('#tpx').val();
+		py = $('#tpy').val();
+		if(!isNaN(Number(px))&&!isNaN(Number(py))&&Number(px)>=0&&Number(px)<1000&&Number(py)>=0&&Number(py)<1000){
+			px = $('#tpx').val();
+			py = $('#tpy').val();
+			//-----Add New Point Here----
+			$('#tpx').val('');
+			$('#tpy').val('');
+			$(this).hide();
+			$('#addPoint').show();
+		}
+		else{
+			alert('ค่า x และ y ต้องไม่น้อยกว่า 1,000 และไม่ติดลบ');
+			$('#tpx').val('');
+			$('#tpy').val('');
+		}
+		
 	});
 })
 
