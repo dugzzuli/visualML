@@ -135,8 +135,9 @@ $(function () {
 				$('#results').append(resultContent);
 				
 				//plot panel: show result
-				DTResult(returnData.result.boundary);
-				
+				DTResult(returnData.result.boundary, returnData.result.data);
+
+				allToolbuttonOut();
 				$(".loader").hide();	
 
 			});
@@ -158,3 +159,9 @@ $(function () {
 		});
 	});
 })
+
+function allToolbuttonOut(){
+	$(".toolbutton").removeClass('current');
+	isPlot = false;
+	cursorForPlot();
+}

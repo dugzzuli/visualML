@@ -19,7 +19,7 @@ var timer_drawpoint = 0;
 var plot3_radius = 50;
 
 var class_label = ["A", "B", "C", "D", "E"];
-var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple"}; 
+var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple", "U":"grey"}; 
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
@@ -122,7 +122,7 @@ function addNewPointWithPosition(x, y){
 }
 
 function clearAllDataPoint(){
-    svg.selectAll("circle").remove();
+    svg.selectAll("circle.datadot").remove();
 }
 
 function drawBoundary(x1, x2, y1, y2, label){

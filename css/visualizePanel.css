@@ -22,7 +22,13 @@
 
 .dot.incorrectPredict{
 	stroke:white;
+	stroke-width:2;
 }
+
+.dot.unknownPredict{
+	stroke-width:2;
+}
+
 
 #circleRandomPlot{
 	fill: rgba(255,255,255,0);
