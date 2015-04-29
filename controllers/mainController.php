@@ -5,7 +5,7 @@ include("../models/Kmeans.php");
 include("../models/Dbscan.php");
 
 $algorithm = $_POST["Algorithm"];
-$data = $_POST["inputData"];
+$data = json_decode($_POST["inputData"],true);
 $status = "success";
 
 if($algorithm == "modalDT"){
