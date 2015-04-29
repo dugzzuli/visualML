@@ -38,7 +38,12 @@ $(function () {
 		}
 	});
 
+	$(".undobutton").click(function(){
+		undoPlotStep();
+	});
+
 	$(".clearbutton").click(function(){
+		clearHistory();
 		clearAllDataPoint();
 	});
 
@@ -133,14 +138,12 @@ $(function () {
 				var resultContent = $(resultHTML);
 				$('#results').empty();
 				$('#results').append(resultContent);
+				clearHistory()
+				//plot panel: show result
+				DTResult(returnData.result.boundary, returnData.result.data);
+				allToolbuttonOut();
 				$(".loader").hide();	
-				// returnData = JSON.parse(jsonReturnData);
-				// if (returnData.status == "error") {
-				//  	alert("Error");
-				// }
-				// else{
-				// 	console.log(returnData.result);
-				// }
+
 			});
 		}
 	);
@@ -160,3 +163,9 @@ $(function () {
 		});
 	});
 })
+
+function allToolbuttonOut(){
+	$(".toolbutton").removeClass('current');
+	isPlot = false;
+	cursorForPlot();
+}

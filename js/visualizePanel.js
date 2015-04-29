@@ -12,29 +12,30 @@ var selectedClass = null;
 var maxX = 1000;
 var maxY = 1000;
 
-var dataSet = [];
-var currentIndexOfData = 0;
-
 var timer_drawpoint = 0;
 var plot3_radius = 50;
 
+var class_label = ["A", "B", "C", "D", "E"];
+var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple", "U":"grey"};
 
+var history = [];
+var historyTemp = []; 
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
-.attr("width", panelWidth+paddingRight+paddingLeft)
-.attr("height", panelHeight+paddingTop+paddingBottom)
-.attr("id", "plotPanel")
-.on("mousedown", mousedown)
-.on("mouseup", mouseup)
-.on("click", click);
+            .attr("width", panelWidth+paddingRight+paddingLeft)
+            .attr("height", panelHeight+paddingTop+paddingBottom)
+            .attr("id", "plotPanel")
+            .on("mousedown", mousedown)
+            .on("mouseup", mouseup)
+            .on("click", click);
 
 // Add a background
 svg.append("rect")
-.attr("width", panelWidth+paddingRight+paddingLeft)
-.attr("height", panelHeight+paddingTop+paddingBottom)
-.style("stroke", "#000")
-.style("fill", "#FFFFFF")
+    .attr("width", panelWidth+paddingRight+paddingLeft)
+    .attr("height", panelHeight+paddingTop+paddingBottom)
+    .style("stroke", "#000")
+    .style("fill", "#FFFFFF")
 
 //define x scale
 //Create the Scale we will use for the x Axis
@@ -92,14 +93,15 @@ function addNewPoint(p){
     var y = point[1];
     if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
         console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
-        svg.append("circle")
-                .attr("transform", "translate(" + x + "," + y + ")")
-                .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
-                .attr("r", "5")
-                .attr("class", "datadot dot label"+selectedClass)
-                .attr("data-label",""+selectedClass)
-                .style("cursor", "pointer")
-                .call(drag);
+        return svg.append("circle")
+                    .attr("transform", "translate(" + x + "," + y + ")")
+                    .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
+                    .attr("r", "5")
+                    .attr("fill", class_color[selectedClass])
+                    .attr("class", "datadot dot")
+                    .attr("data-label",""+selectedClass)
+                    .style("cursor", "pointer")
+                    .call(drag);
     }
    
 }
@@ -107,11 +109,12 @@ function addNewPoint(p){
 function addNewPointWithPosition(x, y){
     if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
         console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
-        svg.append("circle")
+        return svg.append("circle")
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
-                .attr("class", "datadot dot label"+selectedClass)
+                .attr("fill", class_color[selectedClass])
+                .attr("class", "datadot dot")
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
@@ -119,27 +122,53 @@ function addNewPointWithPosition(x, y){
 }
 
 function clearAllDataPoint(){
-    svg.selectAll("circle").remove();
+    svg.selectAll("circle.datadot").remove();
+}
+
+// History
+
+function undoPlotStep(){
+    if(history.length > 0){
+        var stepPoints = history[history.length-1];
+        for(var i = 0 ; i < stepPoints.length ; i+=1 ){
+            stepPoints[i].remove();
+        } 
+        history.pop();
+    }
+}
+
+function clearHistory(){
+    history = [];
+}
+
+function drawBoundary(x1, x2, y1, y2, label){
+    if( x1 < x2 && y1 < y2){
+        px1 = Math.floor(DataToPixelScaleX(x1));
+        px2 = Math.floor(DataToPixelScaleX(x2));
+        py1 = Math.floor(DataToPixelScaleY(y1));
+        py2 = Math.floor(DataToPixelScaleY(y2));
+        svg.append("rect")
+            .attr("class", "boundary")
+            .attr("x", px1)
+            .attr("y", py2)
+            .attr("width", px2 - px1)
+            .attr("height", py1 - py2)
+            .attr("fill", class_color[label]);
+    }
 }
 
 function click() {
     // Ignore the click event if it was suppressed
     if (d3.event.defaultPrevented) return;
-
-    // Extract the click location    
-    // var point = d3.mouse(this),
-    // p = {
-    //     x: point[0],
-    //     y: point[1]
-    // };
     if(isPlot){
         if (plotOption == 1) {
             if(selectedClass == null)   window.alert("Please select class");
             else{
                 //plot a point
                 // Append a new point
-                addNewPoint(this);
-                console.log(this);
+                var newPoint = addNewPoint(this);
+                historyTemp = [newPoint];
+                history.push(historyTemp);
             }
         }
         else if(plotOption == 3){
@@ -150,15 +179,17 @@ function click() {
                 var x = point[0];
                 var y = point[1];
                 num_point = 0;
+                historyTemp = [];
                 while(num_point < 10){
                     randx = (Math.random() * (plot3_radius * 2 + 1)) + (x - plot3_radius);
                     randy = (Math.random() * (plot3_radius * 2 + 1)) + (y - plot3_radius);
                     if(Math.pow((randx - x), 2) + Math.pow((randy - y), 2) <= plot3_radius*plot3_radius && randx >= paddingLeft && randx < paddingLeft+panelWidth && randy > paddingTop && randy <= paddingTop+panelHeight){
-                        addNewPointWithPosition(randx,randy);
+                        historyTemp.push(addNewPointWithPosition(randx,randy));
                         num_point += 1;
                     }
                     
                 }
+                history.push(historyTemp);
             }
         }
     }
@@ -188,6 +219,7 @@ function mousedown(){
         if(selectedClass == null)   window.alert("Please select class");
         else{
             timer_drawpoint = Date.now();
+            historyTemp = [];
             svg.on("mousemove", mousemovePlot2);
         }
     }
@@ -196,7 +228,7 @@ function mousedown(){
 function mousemovePlot2(){
     if(Date.now() - timer_drawpoint>=100){
         timer_drawpoint = Date.now();
-        addNewPoint(this);
+        historyTemp.push(addNewPoint(this));
     }
 
 }
@@ -206,6 +238,7 @@ function mouseup(){
     if(isPlot && plotOption == 2){
         svg.on("mousemove", null);
         timer_drawpoint = 0;
+        if(historyTemp.length>0)    history.push(historyTemp);
     }   
 }
 

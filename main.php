@@ -189,7 +189,7 @@ same forever.</p>
 					<div class="tool toolbutton brushbutton">
 						<a><i class="fa fa-paint-brush"></i></a>
 					</div>		
-					<div class="tool toolclear">
+					<div class="tool toolclear undobutton">
 						<a><i class="fa fa-undo"></i></a>
 					</div>
 					<div class="tool toolclear clearbutton">
@@ -243,5 +243,6 @@ same forever.</p>
 		<script src="js/main_script.js"></script>
 		<script src="js/d3.min.js"></script>
 		<script src="js/visualizePanel.js"></script>
+		<script src="js/visualizeResult.js"></script>
 	</body>
 </html>
