@@ -4,6 +4,7 @@ include("../models/DecisionTree.php");
 include("../models/Kmeans.php");
 include("../models/Dbscan.php");
 include("../models/LinearRegression.php");
+include("../models/NaiveBayes.php");
 
 $algorithm = $_POST["Algorithm"];
 $data = json_decode($_POST["inputData"],true);
@@ -27,6 +28,10 @@ else if($algorithm == "modalDB"){
 }
 else if($algorithm == "modalLR"){
 	$result = linear_regression($data);
+	print json_encode(array("status"=>$status, "result"=>$result));
+}
+else if($algorithm == "modalNB"){
+	$result = naive_bayes($data);
 	print json_encode(array("status"=>$status, "result"=>$result));
 }
 ?>

@@ -19,7 +19,7 @@ function SumSTD($array = array())
     {
         if( isset($value) && $value != '' )
         {
-            $check[] = pow( ($value-$this->Average($array)), 2 );
+            $check[] = pow( ($value-Average($array)), 2 );
         }
     }
 
@@ -28,13 +28,13 @@ function SumSTD($array = array())
        $number = $value+$number;
     }
 
-    if( $this->Average($array) == 0 )
+    if( Average($array) == 0 )
     {
         $Average = 1;
     }
     else
     {
-        $Average = $this->Average($array);
+        $Average = Average($array);
     }
 
     $number = $number/$count;

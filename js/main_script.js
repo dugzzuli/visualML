@@ -99,7 +99,10 @@ $(function () {
 			}
 			else if(rightModal=="modalLR"){
 				//No Parameters
-			}		
+			}	
+			else if(rightModal=="modalNB"){
+				//No Parameters
+			}	
 			var jsonData = [];
 			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);
