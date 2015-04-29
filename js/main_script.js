@@ -145,7 +145,9 @@ $(function () {
 				$('#results').append(resultContent);
 				clearHistory()
 				//plot panel: show result
-				DTResult(returnData.result.boundary, returnData.result.data);
+				if(rightModal=="modalDT"){
+					DTResult(returnData.result.boundary, returnData.result.data);
+				}
 				allToolbuttonOut();
 				$(".loader").hide();	
 
@@ -161,7 +163,14 @@ $(function () {
 		$('#selectClassPanel').show();
 		if(rightModal=="modalKM" || rightModal=="modalDB" || rightModal=="modalLR" || rightModal=="modalRT"){
 			$('#selectClassPanel').hide();
+			isClassification = false;
+			initialAlgoParameterAndData();
 		}
+		else{
+			isClassification = true;
+			initialAlgoParameterAndData();
+		}
+
 	});
 
 	$("#setDefault").click(function(){

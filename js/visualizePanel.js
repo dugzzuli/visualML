@@ -5,7 +5,7 @@ var paddingLeft = 40;
 var paddingTop = 20;
 var paddingRight = 20;
 
-var algo_type = "Classification";
+var isClassification = true;
 var selectedClass = "A";
 
 var maxX = 1000;
@@ -97,6 +97,21 @@ function resetPlotPanel(){
     initialPlotPanel();
 }
 
+function initialAlgoParameterAndData(){
+    if(isClassification){
+        selectedClass = "A";
+    }
+    else{
+        selectedClass = "U";
+    }
+    adjustScreenForAlgoChange();
+}
+
+function adjustScreenForAlgoChange(){
+        svg.selectAll("circle.datadot")
+            .attr("fill", class_color[selectedClass]);
+}
+
 function addNewPoint(p){
     var point = d3.mouse(p);
     var x = point[0];
@@ -111,7 +126,7 @@ function addNewPointWithPositionScale(x, y){
 function addNewPointWithPosition(x, y){
     if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
         if(plotOption == 1) updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
-        return newPoint = svg.append("circle")
+        var newPoint = svg.append("circle")
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
@@ -120,6 +135,7 @@ function addNewPointWithPosition(x, y){
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
+        return newPoint;
     }
 }
 
@@ -136,7 +152,7 @@ function clearAllDataPoint(){
 // History
 
 function undoPlotStep(){
-    if(history.length > 0){
+    if(historyForUndo.length > 0){
         var stepPoints = historyForUndo[historyForUndo.length-1];
         for(var i = 0 ; i < stepPoints.length ; i+=1 ){
             stepPoints[i].remove();
