@@ -18,23 +18,24 @@ var currentIndexOfData = 0;
 var timer_drawpoint = 0;
 var plot3_radius = 50;
 
-
+var class_label = ["A", "B", "C", "D", "E"];
+var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple"}; 
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
-.attr("width", panelWidth+paddingRight+paddingLeft)
-.attr("height", panelHeight+paddingTop+paddingBottom)
-.attr("id", "plotPanel")
-.on("mousedown", mousedown)
-.on("mouseup", mouseup)
-.on("click", click);
+            .attr("width", panelWidth+paddingRight+paddingLeft)
+            .attr("height", panelHeight+paddingTop+paddingBottom)
+            .attr("id", "plotPanel")
+            .on("mousedown", mousedown)
+            .on("mouseup", mouseup)
+            .on("click", click);
 
 // Add a background
 svg.append("rect")
-.attr("width", panelWidth+paddingRight+paddingLeft)
-.attr("height", panelHeight+paddingTop+paddingBottom)
-.style("stroke", "#000")
-.style("fill", "#FFFFFF")
+    .attr("width", panelWidth+paddingRight+paddingLeft)
+    .attr("height", panelHeight+paddingTop+paddingBottom)
+    .style("stroke", "#000")
+    .style("fill", "#FFFFFF")
 
 //define x scale
 //Create the Scale we will use for the x Axis
@@ -96,7 +97,8 @@ function addNewPoint(p){
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
-                .attr("class", "datadot dot label"+selectedClass)
+                .attr("fill", class_color[selectedClass])
+                .attr("class", "datadot dot")
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
@@ -111,7 +113,8 @@ function addNewPointWithPosition(x, y){
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
-                .attr("class", "datadot dot label"+selectedClass)
+                .attr("fill", class_color[selectedClass])
+                .attr("class", "datadot dot")
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
@@ -120,6 +123,22 @@ function addNewPointWithPosition(x, y){
 
 function clearAllDataPoint(){
     svg.selectAll("circle").remove();
+}
+
+function drawBoundary(x1, x2, y1, y2, label){
+    if( x1 < x2 && y1 < y2){
+        px1 = Math.floor(DataToPixelScaleX(x1));
+        px2 = Math.floor(DataToPixelScaleX(x2));
+        py1 = Math.floor(DataToPixelScaleY(y1));
+        py2 = Math.floor(DataToPixelScaleY(y2));
+        svg.append("rect")
+            .attr("class", "boundary")
+            .attr("x", px1)
+            .attr("y", py2)
+            .attr("width", px2 - px1)
+            .attr("height", py1 - py2)
+            .attr("fill", class_color[label]);
+    }
 }
 
 function click() {

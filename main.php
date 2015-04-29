@@ -243,5 +243,6 @@ same forever.</p>
 		<script src="js/main_script.js"></script>
 		<script src="js/d3.min.js"></script>
 		<script src="js/visualizePanel.js"></script>
+		<script src="js/visualizeResult.js"></script>
 	</body>
 </html>

@@ -10,32 +10,18 @@
     font-size: 11px;
 }
 
-.dot.labelA{
-	fill: red;
-}
-
-.dot.labelB{
-	fill: green;
-}
-
-.dot.labelC{
-	fill: blue;
-}
-
-.dot.labelD{
-	fill: orange;
-}
-
-.dot.labelE{
-	fill: purple;
-}
-
-.dot.labelU{
-	fill: grey;
-}
-
 .dot{
 	stroke: black;
+}
+
+.boundary{
+	fill-opacity: 0.2;
+	stroke-width:1;
+	stroke:rgb(0,0,0);
+}
+
+.dot.incorrectPredict{
+	stroke:white;
 }
 
 #circleRandomPlot{

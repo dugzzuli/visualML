@@ -133,14 +133,12 @@ $(function () {
 				var resultContent = $(resultHTML);
 				$('#results').empty();
 				$('#results').append(resultContent);
+				
+				//plot panel: show result
+				DTResult(returnData.result.boundary);
+				
 				$(".loader").hide();	
-				// returnData = JSON.parse(jsonReturnData);
-				// if (returnData.status == "error") {
-				//  	alert("Error");
-				// }
-				// else{
-				// 	console.log(returnData.result);
-				// }
+
 			});
 		}
 	);
