@@ -7,8 +7,8 @@ var paddingLeft = 40;
 var paddingTop = 20;
 var paddingRight = 20;
 
-var selectedClass = null;
 var algo_type = "Classification";
+var selectedClass = "A";
 
 var maxX = 1000;
 var maxY = 1000;

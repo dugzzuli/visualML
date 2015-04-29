@@ -5,6 +5,7 @@ $(function () {
 	$(".loader").hide();
 	$('.mpara').hide();
 	$('.modalDT').show();
+	$('#placePoint').hide();
 	var rightModal = "modalDT";
 	$(".toolbutton").click(function(){
 		if($(this).hasClass('current')){
@@ -21,8 +22,8 @@ $(function () {
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
 			cursorForPlot();
-			$("#px_input").attr("value", "");
-			$("#py_input").attr("value", "");
+			$("#tpx").attr("value", "");
+			$("#tpy").attr("value", "");
 			currentPointForPlot1 = null;
 			$('.pinpoint').show();
 		}
@@ -166,6 +167,32 @@ $(function () {
 			v.value=v.defaultValue;
 		});
 	});
+
+	$('#addPoint').click(function(){
+		$(this).hide();
+		$('#placePoint').show();
+		$('.pinpoint input').val('');
+	});
+
+	$('#placePoint').click(function(){
+		px = $('#tpx').val();
+		py = $('#tpy').val();
+		if(!isNaN(Number(px))&&!isNaN(Number(py))&&Number(px)>=0&&Number(px)<1000&&Number(py)>=0&&Number(py)<1000){
+			px = $('#tpx').val();
+			py = $('#tpy').val();
+			//-----Add New Point Here----
+			$('#tpx').val('');
+			$('#tpy').val('');
+			$(this).hide();
+			$('#addPoint').show();
+		}
+		else{
+			alert('ค่า x และ y ต้องไม่น้อยกว่า 1,000 และไม่ติดลบ');
+			$('#tpx').val('');
+			$('#tpy').val('');
+		}
+		
+	});
 })
 
 function allToolbuttonOut(){
@@ -175,6 +202,6 @@ function allToolbuttonOut(){
 }
 
 function updatePinPoint(x, y){
-	$("#px_input").attr("value", x.toFixed(2));
-	$("#py_input").attr("value", y.toFixed(2));
+	$("#tpx").attr("value", x.toFixed(2));
+	$("#tpy").attr("value", y.toFixed(2));
 }

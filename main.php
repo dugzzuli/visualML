@@ -132,7 +132,12 @@ same forever.</p>
 							<p>Read More -- <a href="en.wikipedia.org/wiki/K-means_clustering" target="blank">K-means Clustering</a></p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledBy="profile-tab" data-modal="modalDB">
-					        <p>DBSCAN, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+					        <p>[From wikipedia.com]</p>
+					        <p><b class="topic">Density-based spatial clustering of applications with noise (DBSCAN)</b> is a data clustering algorithm proposed by Martin Ester, Hans-Peter Kriegel, Jorg Sander and Xiaowei Xu in 1996. It is a density-based clustering algorithm: given a set of points in some space, it groups together points that are closely packed together (points with many nearby neighbors), marking as outliers points that lie alone in low-density regions (whose nearest neighbors are too far away). DBSCAN is one of the most common clustering algorithms and also most cited in scientific literature.</p>
+					    	<img src="img/db1.png" />
+					    	<p>DBSCAN requires two parameters: ε (eps) and the minimum number of points required to form a dense region(minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.</p>
+							<p>If a point is found to be a dense part of a cluster, its ε-neighborhood is also part of that cluster. Hence, all points that are found within the ε-neighborhood are added, as is their own ε-neighborhood when they are also dense. This process continues until the density-connected cluster is completely found. Then, a new unvisited point is retrieved and processed, leading to the discovery of a further cluster or noise</p>
+					    	<p>Read More -- <a href="http://en.wikipedia.org/wiki/DBSCAN" target="blank">DBSCAN</a></p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane" id="results">No results</div>
 				    </div>
@@ -200,10 +205,10 @@ same forever.</p>
 					Class:&nbsp;
 					<div class="dropup">
 					  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
-					    	Select Class
+					    	<i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a>
 					    	<span class="caret"></span>
 					  	</button>
-					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="selectClassMenu">
 						    <li role="presentation"><a class="aClass CA" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:red;"></i>&nbsp;A</a></li>
 						    <li role="presentation"><a class="aClass CB" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:green;"></i>&nbsp;B</a></li>
 						    <li role="presentation"><a class="aClass CC" role="menuitem" tabindex="-1" href="#"><i class="fa fa-circle" style="color:blue;"></i>&nbsp;C</a></li>
@@ -216,17 +221,20 @@ same forever.</p>
 				<div class="col-md-1 pp">
                     <div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="px">X</span>
-					  	<input type="text" class="form-control" id="px_input">
+					  	<input type="text" name="px" id="tpx" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-1 pp">
 					<div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="py">Y</span>
-					  	<input type="text" class="form-control" id="py_input">
+					  	<input type="text" name="py" id="tpy" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-1 pp">
-					<button type="button" class="btn btn-success pinpoint">Place</button>
+					<div class="pinpoint">
+						<button type="button" class="btn btn-default" id="addPoint">+</button>
+						<button type="button" class="btn btn-success" id="placePoint">Place</button>
+					</div>					
 				</div>
 				<div class="col-md-2" id="compute">
 					<button type="button" class="btn btn-primary btn-block" id="classifyButton">Classify</button>
