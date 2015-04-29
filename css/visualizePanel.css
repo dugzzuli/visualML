@@ -20,6 +20,11 @@
 	stroke:rgb(0,0,0);
 }
 
+.centroids{
+	stroke-width:3;
+	stroke:rgb(0,0,0);
+}
+
 .dot.incorrectPredict{
 	stroke:white;
 	stroke-width:2;

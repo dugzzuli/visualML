@@ -46,7 +46,7 @@ $(function () {
 
 	$(".clearbutton").click(function(){
 		clearHistory();
-		clearAllDataPoint();
+		resetPlotPanel();
 	});
 
 	$(".aClass").click(function(){
@@ -87,7 +87,6 @@ $(function () {
 			var url = "controllers/mainController.php";
 			var postData = {};
 			postData.Algorithm = rightModal;
-			postData.inputData = [];
 			if(rightModal=="modalDT"){
 				postData.minpts = $('#modalDT1').val();
 			}
@@ -100,10 +99,11 @@ $(function () {
 			}
 			else if(rightModal=="modalLR"){
 				//No Parameters
-			}		
+			}	
 			else if(rightModal=="modalNB"){
 				//No Parameters
 			}	
+			var jsonData = [];
 			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);
 				pos = $(this).attr("coordinate");
@@ -118,8 +118,9 @@ $(function () {
 				data.y = posy;
 				data.label = label;
 				data.predict = "U";
-				postData.inputData.push(data);
+				jsonData.push(data);
 			});
+			postData.inputData = JSON.stringify(jsonData);
 			console.log(postData);
 			$.ajax({
 				method: "POST",
@@ -152,6 +153,17 @@ $(function () {
 				//plot panel: show result
 				if(rightModal=="modalDT"){
 					DTResult(returnData.result.boundary, returnData.result.data);
+				}
+				else if(rightModal == "modalDB"){
+					if(returnData.result.results["Total Clusters"] > 20){
+						alert("Cannot show results, too many clusters.");
+					}
+					else{
+						DBResult(returnData.result.clusters);
+					}
+				}
+				else if(rightModal=="modalKM"){
+					KMResult(returnData.result.belongs_to, returnData.result.centroids);
 				}
 				allToolbuttonOut();
 				$(".loader").hide();	

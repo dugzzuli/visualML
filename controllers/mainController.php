@@ -7,7 +7,7 @@ include("../models/LinearRegression.php");
 include("../models/NaiveBayes.php");
 
 $algorithm = $_POST["Algorithm"];
-$data = $_POST["inputData"];
+$data = json_decode($_POST["inputData"],true);
 $status = "success";
 
 if($algorithm == "modalDT"){

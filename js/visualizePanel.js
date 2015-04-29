@@ -21,7 +21,9 @@ var class_label = ["A", "B", "C", "D", "E"];
 var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple", "U":"grey"};
 
 var historyForUndo = [];
-var historyTemp = []; 
+var historyTemp = [];
+
+var colorCollection = d3.scale.category20(); 
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
@@ -108,8 +110,20 @@ function initialAlgoParameterAndData(){
 }
 
 function adjustScreenForAlgoChange(){
+    clearWithoutData();
+    if(isClassification){
         svg.selectAll("circle.datadot")
-            .attr("fill", class_color[selectedClass]);
+            .attr("fill", function(){
+                return class_color[d3.select(this).attr("data-label")];
+            })
+            .attr("class", "datadot dot");
+    }
+    else{
+        svg.selectAll("circle.datadot")
+            .attr("fill", class_color[selectedClass])
+            .attr("class", "datadot dot");
+    }
+    
 }
 
 function addNewPoint(p){
@@ -145,6 +159,10 @@ function addNewPointOption1Place(x, y){
     historyForUndo.push(historyTemp);
 }
 
+function clearWithoutData(){
+    svg.selectAll("runResult").remove();
+}
+
 function clearAllDataPoint(){
     svg.selectAll("circle.datadot").remove();
 }
@@ -172,7 +190,7 @@ function drawBoundary(x1, x2, y1, y2, label){
         py1 = Math.floor(dataToPixelScaleY(y1));
         py2 = Math.floor(dataToPixelScaleY(y2));
         svg.append("rect")
-            .attr("class", "boundary")
+            .attr("class", "boundary runResult")
             .attr("x", px1)
             .attr("y", py2)
             .attr("width", px2 - px1)
