@@ -52,6 +52,7 @@ function decisionTree($data,$minpts){
  	$debug = [];
  	while(count($chunk)!=0){
  		$aChunk = array_pop($chunk);
+ 		if(is_null($aChunk[4])) continue;
  		$aggregateArray = aggregate($data,$aChunk);
  		array_push($debug, [$aggregateArray,$aChunk]);
  		if($aggregateArray['all']<=$minpts) array_push($finish, $aChunk);
@@ -94,7 +95,7 @@ function decisionTree($data,$minpts){
  					$maxInfogain = $infoGain;
  				}
  			}
- 			if($maxInfogain==0) array_push($finish, $aChunk);
+ 			if($maxInfogain==0 && !is_null($aChunk[4])) array_push($finish, $aChunk);
  			if($split[0]=='x'){
  				$chunkLeft = $aChunk;
  				$chunkLeft[1] = $split[1]; 				
@@ -109,10 +110,14 @@ function decisionTree($data,$minpts){
  			}
  			$chunkLeft[4] = $split[2][1];
  			$chunkRight[4] = $split[3][1];	
- 			if($split[2][0]==0) array_push($finish, $chunkLeft);
-			else array_push($chunk, $chunkLeft);
-			if($split[3][0]==0) array_push($finish, $chunkRight);
-			else array_push($chunk, $chunkRight);
+ 			if(!is_null($chunkLeft[4])){
+ 				if($split[2][0]==0) array_push($finish, $chunkLeft);
+				else array_push($chunk, $chunkLeft);
+ 			}
+ 			if(!is_null($chunkRight[4])){
+ 				if($split[3][0]==0) array_push($finish, $chunkRight);
+				else array_push($chunk, $chunkRight);
+ 			}		
 		}
 	}
 

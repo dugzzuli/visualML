@@ -167,7 +167,7 @@ same forever.</p>
      			      		<div class= "modalDB mpara">
 				      			<h4 class="modalLabel">EPS (Epsilon)</h4>
     							<input type="text" class="form-control" id="modalDB1" value="20">
-    							<h4 class="modalLabel">MinPts</h4>
+    							<h4 class="modalLabel">MinPts (Minimum Points)</h4>
     							<input type="text" class="form-control" id="modalDB2" value="3">
      			      		</div>				      		
 				    	</div>

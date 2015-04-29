@@ -59,5 +59,65 @@ function _ll_join_clusters($one, $two) {
    return array_merge($one, $two);
 }
 
+$clusters = array();
+$visited = array();
 
+function tt_dbscan($data, $e, $minimumPoints=10) {
+   global $clusters;
+   global $visited;
+   $clusters = array();
+   $visited = array();
+   $numCluster = 0;
+   foreach($data as $index=>$aPoint) {
+      if(in_array($index, $visited))
+         continue;
+
+      $visited[] = $index;
+
+      $regionPoints = _tt_points_in_region($aPoint, $data, $e);
+      if(count($regionPoints) >= $minimumPoints) {
+         $numCluster +=1;
+         $members = _tt_expand_cluster(array($index=>$aPoint), $regionPoints, $e, $minimumPoints);
+         $clusters[$numCluster] = $members;
+      }
+   }
+   
+   return $clusters;
+}
+
+function _tt_points_in_region($point, $data, $epsilon) {
+   $region = array();
+   
+   foreach($data as $index=>$datum) {
+      if(ll_euclidian_distance($point, $datum) < $epsilon) {
+         $region[$index] = $datum;
+      }
+   }
+   return $region;
+}
+
+function _tt_expand_cluster($cluster, $data, $epsilon, $minimumPoints) {
+   global $visited;
+   //$cluster = array( $point );
+
+   foreach($data as $index=>$datum) {
+      if(!in_array($index, $visited)) {
+         $visited[] = $index;
+         $regionPoints = _tt_points_in_region($datum, $data, $epsilon);
+
+         if(count($regionPoints) > $minimumPoints) {
+            $cluster = _tt_join_clusters($regionPoints, $cluster);
+         }
+      }
+
+      // supposed to check if it belongs to any clusters here.
+      // only add the point if it isn't clustered yet.
+      $cluster = _tt_join_clusters($cluster, array($index=>$datum));
+   }
+   return $cluster;
+}
+
+function _tt_join_clusters($one, $two) {
+   return array_merge($one, $two);
+}
 ?>
