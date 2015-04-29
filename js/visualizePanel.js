@@ -7,6 +7,7 @@ var paddingLeft = 40;
 var paddingTop = 20;
 var paddingRight = 20;
 
+var algo_type = "Classification";
 var selectedClass = "A";
 
 var maxX = 1000;
@@ -18,7 +19,7 @@ var plot3_radius = 50;
 var class_label = ["A", "B", "C", "D", "E"];
 var class_color = {"A":"red", "B":"green", "C":"blue", "D":"orange", "E":"purple", "U":"grey"};
 
-var history = [];
+var historyForUndo = [];
 var historyTemp = []; 
 
 // Create the SVG
@@ -30,52 +31,33 @@ var svg = d3.select("#board").append("svg")
             .on("mouseup", mouseup)
             .on("click", click);
 
-// Add a background
-svg.append("rect")
-    .attr("width", panelWidth+paddingRight+paddingLeft)
-    .attr("height", panelHeight+paddingTop+paddingBottom)
-    .style("stroke", "#000")
-    .style("fill", "#FFFFFF")
-
 //define x scale
 //Create the Scale we will use for the x Axis
 var xScale = d3.scale.linear()
                     .domain([0, maxX])
                     .range([0, panelWidth]);
-
-//Create the Axis
 var xAxis = d3.svg.axis()
                 .scale(xScale);
 
-
-//Create an SVG group Element for the Axis elements and call the xAxis function
-var xAxisGroup = svg.append("g")
-                    .attr("class", "axis")
-                    .attr("transform", "translate("+paddingLeft+"," + (paddingTop + panelHeight) + ")")
-                    .call(xAxis);
 
 //define y scale
 //Create the Scale we will use for the y Axis
 var yScale = d3.scale.linear()
                     .domain([maxY, 0])
                     .range([0, panelHeight]);
-//Create the Axis
 var yAxis = d3.svg.axis()
                 .orient("left")
                 .scale(yScale);
 
-//Create Y axis
-var yAxisGroup = svg.append("g")
-                    .attr("class", "axis")
-                    .attr("transform", "translate(" + paddingLeft + ","+paddingTop+")")
-                    .call(yAxis);
+initialPlotPanel();
+
 
 //useful scale convert function
 var pixelToDataScaleX = d3.scale.linear()
                     .domain([paddingLeft, paddingLeft+panelWidth])
                     .range([0, maxX]);
 
-var DataToPixelScaleX = d3.scale.linear()
+var dataToPixelScaleX = d3.scale.linear()
                     .domain([0, maxX])
                     .range([paddingLeft, paddingLeft+panelWidth]);
 
@@ -83,33 +65,52 @@ var pixelToDataScaleY = d3.scale.linear()
                     .domain([paddingTop, paddingTop+panelHeight])
                     .range([maxY, 0]);
 
-var DataToPixelScaleY = d3.scale.linear()
+var dataToPixelScaleY = d3.scale.linear()
                     .domain([0, maxY])
                     .range([paddingTop+panelHeight, paddingTop]);
+
+
+function initialPlotPanel(){
+    // Add a background
+    svg.append("rect")
+        .attr("width", panelWidth+paddingRight+paddingLeft)
+        .attr("height", panelHeight+paddingTop+paddingBottom)
+        .style("stroke", "#000")
+        .style("fill", "#FFFFFF")
+
+    //Create an SVG group Element for the Axis elements and call the xAxis function
+    var xAxisGroup = svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate("+paddingLeft+"," + (paddingTop + panelHeight) + ")")
+                    .call(xAxis);
+
+    //Create Y axis
+    var yAxisGroup = svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(" + paddingLeft + ","+paddingTop+")")
+                    .call(yAxis);
+}
+
+function resetPlotPanel(){
+    svg.selectAll("*").remove();
+    initialPlotPanel();
+}
 
 function addNewPoint(p){
     var point = d3.mouse(p);
     var x = point[0];
     var y = point[1];
-    if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
-        console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
-        return svg.append("circle")
-                    .attr("transform", "translate(" + x + "," + y + ")")
-                    .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
-                    .attr("r", "5")
-                    .attr("fill", class_color[selectedClass])
-                    .attr("class", "datadot dot")
-                    .attr("data-label",""+selectedClass)
-                    .style("cursor", "pointer")
-                    .call(drag);
-    }
-   
+    return addNewPointWithPosition(x, y);
+}
+
+function addNewPointWithPositionScale(x, y){
+    addNewPointWithPosition(dataToPixelScaleX(x), dataToPixelScaleY(y));    
 }
 
 function addNewPointWithPosition(x, y){
     if(x >= paddingLeft && x < paddingLeft+panelWidth && y > paddingTop && y <= paddingTop+panelHeight){
-        console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
-        return svg.append("circle")
+        if(plotOption == 1) updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
+        var newPoint = svg.append("circle")
                 .attr("transform", "translate(" + x + "," + y + ")")
                 .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")")
                 .attr("r", "5")
@@ -129,24 +130,24 @@ function clearAllDataPoint(){
 
 function undoPlotStep(){
     if(history.length > 0){
-        var stepPoints = history[history.length-1];
+        var stepPoints = historyForUndo[historyForUndo.length-1];
         for(var i = 0 ; i < stepPoints.length ; i+=1 ){
             stepPoints[i].remove();
         } 
-        history.pop();
+        historyForUndo.pop();
     }
 }
 
 function clearHistory(){
-    history = [];
+    historyForUndo = [];
 }
 
 function drawBoundary(x1, x2, y1, y2, label){
     if( x1 < x2 && y1 < y2){
-        px1 = Math.floor(DataToPixelScaleX(x1));
-        px2 = Math.floor(DataToPixelScaleX(x2));
-        py1 = Math.floor(DataToPixelScaleY(y1));
-        py2 = Math.floor(DataToPixelScaleY(y2));
+        px1 = Math.floor(dataToPixelScaleX(x1));
+        px2 = Math.floor(dataToPixelScaleX(x2));
+        py1 = Math.floor(dataToPixelScaleY(y1));
+        py2 = Math.floor(dataToPixelScaleY(y2));
         svg.append("rect")
             .attr("class", "boundary")
             .attr("x", px1)
@@ -168,7 +169,7 @@ function click() {
                 // Append a new point
                 var newPoint = addNewPoint(this);
                 historyTemp = [newPoint];
-                history.push(historyTemp);
+                historyForUndo.push(historyTemp);
             }
         }
         else if(plotOption == 3){
@@ -189,7 +190,7 @@ function click() {
                     }
                     
                 }
-                history.push(historyTemp);
+                historyForUndo.push(historyTemp);
             }
         }
     }
@@ -207,14 +208,13 @@ function dragmove(d) {
     if(y >= paddingTop + panelHeight)    y = paddingTop + panelHeight;
     d3.select(this).attr("transform", "translate(" + x + "," + y + ")")
                     .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")");
-    console.log(x+", "+y+" => ("+pixelToDataScaleX(x)+", "+pixelToDataScaleY(y)+")");
+    updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
 }
 
 var drawPointByDrag = null;
 
 function mousedown(){
     var p = this;
-    console.log("mousedown");
     if(isPlot && plotOption == 2){
         if(selectedClass == null)   window.alert("Please select class");
         else{
@@ -234,11 +234,10 @@ function mousemovePlot2(){
 }
 
 function mouseup(){
-    console.log("mouseup");
     if(isPlot && plotOption == 2){
         svg.on("mousemove", null);
         timer_drawpoint = 0;
-        if(historyTemp.length>0)    history.push(historyTemp);
+        if(historyTemp.length>0)    historyForUndo.push(historyTemp);
     }   
 }
 
