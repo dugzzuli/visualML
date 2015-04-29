@@ -83,5 +83,36 @@ function ClusteringResult(data){
             .style("stroke", "black");
     
 	}
+}
 
+function LRResult(m, c){
+	clearResult();
+	var x1,x2,y1,y2;
+	x1 = 0;
+	y1 = c;
+	if(y1 < 0 || y1 > 1000){
+		if(m >= 0)	y1 = 0;
+		else y1 = 1000;
+		x1 = (y1 - c)/m;
+	}
+	x2 = 1000;
+	y2 = m*x2 + c;
+	if(y2 < 0 || y2 > 1000){
+		if(m >= 0)	y2 = 1000;
+		else y2 = 0;
+		x2 = (y2 - c)/m;
+	}
+
+	x1 = dataToPixelScaleX(x1);
+	x2 = dataToPixelScaleX(x2);
+	y1 = dataToPixelScaleY(y1);
+	y2 = dataToPixelScaleY(y2);
+
+	svg.append("line")
+		.attr("x1", x1)
+		.attr("y1", y1)
+		.attr("x2", x2)
+		.attr("y2", y2)
+		.attr("class", "LRline runResult");
+	
 }

@@ -110,7 +110,7 @@ function initialAlgoParameterAndData(){
 }
 
 function adjustScreenForAlgoChange(){
-    clearWithoutData();
+    clearResult();
     if(isClassification){
         svg.selectAll("circle.datadot")
             .attr("fill", function(){
@@ -159,8 +159,8 @@ function addNewPointOption1Place(x, y){
     historyForUndo.push(historyTemp);
 }
 
-function clearWithoutData(){
-    svg.selectAll("runResult").remove();
+function clearResult(){
+    svg.selectAll(".runResult").remove();
 }
 
 function clearAllDataPoint(){

@@ -162,6 +162,9 @@ $(function () {
 				else if(rightModal=="modalKM"){
 					KMResult(returnData.result.belongs_to, returnData.result.centroids);
 				}
+				else if(rightModal == "modalLR"){
+					LRResult(returnData.result.value.m, returnData.result.value.c);
+				}
 				allToolbuttonOut();
 				$(".loader").hide();	
 
