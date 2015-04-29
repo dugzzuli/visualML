@@ -1,5 +1,3 @@
-var isPlot = false;
-var plotOption = 1;
 var panelWidth = $("#board").width()-60;
 var panelHeight = 500;
 var paddingBottom = 30;
@@ -7,12 +5,15 @@ var paddingLeft = 40;
 var paddingTop = 20;
 var paddingRight = 20;
 
-var algo_type = "Classification";
+var isClassification = true;
 var selectedClass = "A";
 
 var maxX = 1000;
 var maxY = 1000;
 
+var isPlot = false;
+var plotOption = 1;
+var plotOption1_addPoint = false;
 var timer_drawpoint = 0;
 var plot3_radius = 50;
 
@@ -96,6 +97,21 @@ function resetPlotPanel(){
     initialPlotPanel();
 }
 
+function initialAlgoParameterAndData(){
+    if(isClassification){
+        selectedClass = "A";
+    }
+    else{
+        selectedClass = "U";
+    }
+    adjustScreenForAlgoChange();
+}
+
+function adjustScreenForAlgoChange(){
+        svg.selectAll("circle.datadot")
+            .attr("fill", class_color[selectedClass]);
+}
+
 function addNewPoint(p){
     var point = d3.mouse(p);
     var x = point[0];
@@ -104,7 +120,7 @@ function addNewPoint(p){
 }
 
 function addNewPointWithPositionScale(x, y){
-    addNewPointWithPosition(dataToPixelScaleX(x), dataToPixelScaleY(y));    
+    return addNewPointWithPosition(dataToPixelScaleX(x), dataToPixelScaleY(y));    
 }
 
 function addNewPointWithPosition(x, y){
@@ -119,7 +135,14 @@ function addNewPointWithPosition(x, y){
                 .attr("data-label",""+selectedClass)
                 .style("cursor", "pointer")
                 .call(drag);
+        return newPoint;
     }
+}
+
+function addNewPointOption1Place(x, y){
+    var newPoint = addNewPointWithPositionScale(x, y);
+    historyTemp = [newPoint];
+    historyForUndo.push(historyTemp);
 }
 
 function clearAllDataPoint(){
@@ -129,7 +152,7 @@ function clearAllDataPoint(){
 // History
 
 function undoPlotStep(){
-    if(history.length > 0){
+    if(historyForUndo.length > 0){
         var stepPoints = historyForUndo[historyForUndo.length-1];
         for(var i = 0 ; i < stepPoints.length ; i+=1 ){
             stepPoints[i].remove();
@@ -168,6 +191,7 @@ function click() {
                 //plot a point
                 // Append a new point
                 var newPoint = addNewPoint(this);
+                if(plotOption1_addPoint)    changePlotOption1ToDefault();
                 historyTemp = [newPoint];
                 historyForUndo.push(historyTemp);
             }
@@ -209,6 +233,7 @@ function dragmove(d) {
     d3.select(this).attr("transform", "translate(" + x + "," + y + ")")
                     .attr("coordinate", "translate(" + pixelToDataScaleX(x) + "," + pixelToDataScaleY(y) + ")");
     updatePinPoint(pixelToDataScaleX(x), pixelToDataScaleY(y));
+    if(plotOption1_addPoint)    changePlotOption1ToDefault();
 }
 
 var drawPointByDrag = null;

@@ -22,8 +22,8 @@ $(function () {
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
 			cursorForPlot();
-			$("#tpx").attr("value", "");
-			$("#tpy").attr("value", "");
+			$("#tpx").val("");
+			$("#tpy").val("");
 			currentPointForPlot1 = null;
 			$('.pinpoint').show();
 		}
@@ -148,7 +148,9 @@ $(function () {
 				$('#results').append(resultContent);
 				clearHistory()
 				//plot panel: show result
-				DTResult(returnData.result.boundary, returnData.result.data);
+				if(rightModal=="modalDT"){
+					DTResult(returnData.result.boundary, returnData.result.data);
+				}
 				allToolbuttonOut();
 				$(".loader").hide();	
 
@@ -164,7 +166,14 @@ $(function () {
 		$('#selectClassPanel').show();
 		if(rightModal=="modalKM" || rightModal=="modalDB" || rightModal=="modalLR" || rightModal=="modalRT"){
 			$('#selectClassPanel').hide();
+			isClassification = false;
+			initialAlgoParameterAndData();
 		}
+		else{
+			isClassification = true;
+			initialAlgoParameterAndData();
+		}
+
 	});
 
 	$("#setDefault").click(function(){
@@ -179,28 +188,36 @@ $(function () {
 		$(this).hide();
 		$('#placePoint').show();
 		$('.pinpoint input').val('');
+		plotOption1_addPoint = true;
 	});
 
 	$('#placePoint').click(function(){
 		px = $('#tpx').val();
 		py = $('#tpy').val();
 		if(!isNaN(Number(px))&&!isNaN(Number(py))&&Number(px)>=0&&Number(px)<1000&&Number(py)>=0&&Number(py)<1000){
-			px = $('#tpx').val();
-			py = $('#tpy').val();
-			//-----Add New Point Here----
+			px = Math.floor(px * 100) / 100;
+			py = Math.floor(py * 100) / 100;
+			addNewPointOption1Place(px, py)
 			$('#tpx').val('');
 			$('#tpy').val('');
-			$(this).hide();
-			$('#addPoint').show();
+			// $(this).hide();
+			// $('#addPoint').show();
+			// plotOption1_addPoint = false;
 		}
 		else{
-			alert('ค่า x และ y ต้องไม่น้อยกว่า 1,000 และไม่ติดลบ');
+			alert('ค่า x และ y ต้องน้อยกว่า 1,000 และไม่ติดลบ');
 			$('#tpx').val('');
 			$('#tpy').val('');
 		}
 		
 	});
 })
+
+function changePlotOption1ToDefault(){
+	plotOption1_addPoint = false;
+	$('#placePoint').hide();
+	$('#addPoint').show();
+}
 
 function allToolbuttonOut(){
 	$(".toolbutton").removeClass('current');
@@ -209,6 +226,6 @@ function allToolbuttonOut(){
 }
 
 function updatePinPoint(x, y){
-	$("#tpx").attr("value", x.toFixed(2));
-	$("#tpy").attr("value", y.toFixed(2));
+	$("#tpx").val(x.toFixed(2));
+	$("#tpy").val(y.toFixed(2));
 }
