@@ -174,7 +174,10 @@ same forever.</p>
     							<input type="text" class="form-control" id="modalDB1" value="20">
     							<h4 class="modalLabel">MinPts (Minimum Points)</h4>
     							<input type="text" class="form-control" id="modalDB2" value="3">
-     			      		</div>				      		
+     			      		</div>	
+     			      		<div class= "modalLR mpara">
+				      			<h4 class="modalLabel">No Parameters</h4>
+    						</div>			      		
 				    	</div>
 					    <div class="modal-footer">
 					    	<button type="button" class="btn btn-info" id="setDefault">Set Default</button>

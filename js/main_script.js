@@ -97,6 +97,9 @@ $(function () {
 			else if(rightModal=="modalDB"){
 				postData.eps = $('#modalDB1').val();
 				postData.minPts = $('#modalDB2').val();
+			}
+			else if(rightModal=="modalLR"){
+				//No Parameters
 			}		
 			
 			$('#plotPanel > circle.datadot').each(function () {
