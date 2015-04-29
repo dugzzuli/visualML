@@ -8,7 +8,7 @@ function dbscan($data,$eps,$minPts){
 	for($i=0;$i<$count;$i+=1){
 		array_push($xs,[$data[$i]['x'],$data[$i]['y']]);
 	}
-	$clusters=ll_dbscan($xs,$eps,$minPts);
+	$clusters=tt_dbscan($xs,$eps,$minPts);
 	$results = [];
 	$debug=[];
 
