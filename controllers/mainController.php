@@ -3,6 +3,7 @@
 include("../models/DecisionTree.php");
 include("../models/Kmeans.php");
 include("../models/Dbscan.php");
+include("../models/LinearRegression.php");
 
 $algorithm = $_POST["Algorithm"];
 $data = json_decode($_POST["inputData"],true);
@@ -22,6 +23,10 @@ else if($algorithm == "modalDB"){
 	$eps = $_POST["eps"];
 	$minPts = $_POST["minPts"];
 	$result = dbscan($data, $eps, $minPts);
+	print json_encode(array("status"=>$status, "result"=>$result));
+}
+else if($algorithm == "modalLR"){
+	$result = linear_regression($data);
 	print json_encode(array("status"=>$status, "result"=>$result));
 }
 ?>
