@@ -38,7 +38,12 @@ $(function () {
 		}
 	});
 
+	$(".undobutton").click(function(){
+		undoPlotStep();
+	});
+
 	$(".clearbutton").click(function(){
+		clearHistory();
 		clearAllDataPoint();
 	});
 
@@ -133,10 +138,9 @@ $(function () {
 				var resultContent = $(resultHTML);
 				$('#results').empty();
 				$('#results').append(resultContent);
-				
+				clearHistory()
 				//plot panel: show result
 				DTResult(returnData.result.boundary, returnData.result.data);
-
 				allToolbuttonOut();
 				$(".loader").hide();	
 

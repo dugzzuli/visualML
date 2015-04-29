@@ -189,7 +189,7 @@ same forever.</p>
 					<div class="tool toolbutton brushbutton">
 						<a><i class="fa fa-paint-brush"></i></a>
 					</div>		
-					<div class="tool toolclear">
+					<div class="tool toolclear undobutton">
 						<a><i class="fa fa-undo"></i></a>
 					</div>
 					<div class="tool toolclear clearbutton">
