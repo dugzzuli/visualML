@@ -116,12 +116,14 @@ function adjustScreenForAlgoChange(){
             .attr("fill", function(){
                 return class_color[d3.select(this).attr("data-label")];
             })
-            .attr("class", "datadot dot");
+            .attr("class", "datadot dot")
+            .style("stroke", "black");
     }
     else{
         svg.selectAll("circle.datadot")
             .attr("fill", class_color[selectedClass])
-            .attr("class", "datadot dot");
+            .attr("class", "datadot dot")
+            .style("stroke", "black");
     }
     
 }

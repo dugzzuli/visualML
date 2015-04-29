@@ -120,58 +120,67 @@ $(function () {
 				data.predict = "U";
 				jsonData.push(data);
 			});
-			postData.inputData = JSON.stringify(jsonData);
-			console.log(postData);
-			$.ajax({
-				method: "POST",
-				url: url,
-				data: postData
-			}).done(function (jsonReturnData) { 
-				// Result handler
-				console.log(jsonReturnData);
-				returnData = JSON.parse(jsonReturnData);
-				results = returnData.result.results;
-				resultHTML = '<table class="table">';
-				console.log(results);
-				for(var key in results){
-					console.log(key);
-					resultHTML += '<tr>';
-					resultHTML += '<td>';
-					resultHTML += key;
-					resultHTML += '</td>';
-					resultHTML += '<td>';
-					resultHTML += results[key];
-					resultHTML += '</td>';
-					resultHTML += '</tr>';
-				}
-				//resultHTML += '<tr><td></td><td></td></tr>';
-				resultHTML += '</table>';
-				var resultContent = $(resultHTML);
-				$('#results').empty();
-				$('#results').append(resultContent);
-				clearHistory()
-				//plot panel: show result
-				if(rightModal=="modalDT"){
-					DTResult(returnData.result.boundary, returnData.result.data);
-				}
-				else if(rightModal == "modalDB"){
-					if(returnData.result.results["Total Clusters"] > 20){
-						alert("Cannot show results, too many clusters.");
+			if(jsonData.length == 0){
+				alert("Please plot at least a point of data");
+				$(".loader").hide();
+			}
+			else{
+				postData.inputData = JSON.stringify(jsonData);
+				console.log(postData);
+				$.ajax({
+					method: "POST",
+					url: url,
+					data: postData
+				}).done(function (jsonReturnData) { 
+					// Result handler
+					console.log(jsonReturnData);
+					returnData = JSON.parse(jsonReturnData);
+					results = returnData.result.results;
+					resultHTML = '<table class="table">';
+					console.log(results);
+					for(var key in results){
+						console.log(key);
+						resultHTML += '<tr>';
+						resultHTML += '<td>';
+						resultHTML += key;
+						resultHTML += '</td>';
+						resultHTML += '<td>';
+						resultHTML += results[key];
+						resultHTML += '</td>';
+						resultHTML += '</tr>';
 					}
-					else{
-						DBResult(returnData.result.clusters);
+					//resultHTML += '<tr><td></td><td></td></tr>';
+					resultHTML += '</table>';
+					var resultContent = $(resultHTML);
+					$('#results').empty();
+					$('#results').append(resultContent);
+					clearHistory()
+					//plot panel: show result
+					if(rightModal=="modalDT"){
+						DTResult(returnData.result.boundary, returnData.result.data);
 					}
-				}
-				else if(rightModal=="modalKM"){
-					KMResult(returnData.result.belongs_to, returnData.result.centroids);
-				}
-				else if(rightModal == "modalLR"){
-					LRResult(returnData.result.value.m, returnData.result.value.c);
-				}
-				allToolbuttonOut();
-				$(".loader").hide();	
-
-			});
+					else if(rightModal == "modalDB"){
+						if(returnData.result.results["Total Clusters"] > 20){
+							alert("Cannot show results, too many clusters.");
+						}
+						else{
+							DBResult(returnData.result.clusters);
+						}
+					}
+					else if(rightModal=="modalKM"){
+						KMResult(returnData.result.belongs_to, returnData.result.centroids);
+					}
+					else if(rightModal == "modalLR"){
+						LRResult(returnData.result.value.m, returnData.result.value.c);
+					}
+					else if(rightModal == "modalNB"){
+						NBResult(returnData.result.data);
+					}
+					allToolbuttonOut();
+					$(".loader").hide();
+				});
+			}
+			
 		}
 	);
 
