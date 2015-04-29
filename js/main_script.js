@@ -21,6 +21,9 @@ $(function () {
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
 			cursorForPlot();
+			$("#px_input").attr("value", "");
+			$("#py_input").attr("value", "");
+			currentPointForPlot1 = null;
 			$('.pinpoint').show();
 		}
 		else{
@@ -29,12 +32,10 @@ $(function () {
 		if($('.current').hasClass('pencilbutton')){
 			plotOption = 2;
 			cursorForPlot();
-			console.log(plotOption);
 		}
 		if($('.current').hasClass('brushbutton')){
 			plotOption = 3;
 			cursorForPlot();
-			console.log(plotOption);
 		}
 	});
 
@@ -76,6 +77,9 @@ $(function () {
 		var drop = $('<span class="caret"></span>');
 		$("#dropdownMenu2").append(drop);
 	});
+
+	
+
 
 	$("#classifyButton").click(function () {
 			$(".loader").show();
@@ -168,4 +172,9 @@ function allToolbuttonOut(){
 	$(".toolbutton").removeClass('current');
 	isPlot = false;
 	cursorForPlot();
+}
+
+function updatePinPoint(x, y){
+	$("#px_input").attr("value", x.toFixed(2));
+	$("#py_input").attr("value", y.toFixed(2));
 }

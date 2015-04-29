@@ -216,13 +216,13 @@ same forever.</p>
 				<div class="col-md-1 pp">
                     <div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="px">X</span>
-					  	<input type="text" class="form-control">
+					  	<input type="text" class="form-control" id="px_input">
 					</div>
 				</div>
 				<div class="col-md-1 pp">
 					<div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="py">Y</span>
-					  	<input type="text" class="form-control">
+					  	<input type="text" class="form-control" id="py_input">
 					</div>
 				</div>
 				<div class="col-md-1 pp">
