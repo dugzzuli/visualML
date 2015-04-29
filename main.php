@@ -78,7 +78,7 @@
 				        <a href="#" id="myTabDrop1" class="dropdown-toggle in active" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Classification<span class="caret"></span></a>
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
 				          <li><a href="#dropdown1" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" class="active" data-modal="modalDT">Decision Tree</a></li>
-				          <li><a href="#dropdown2" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2"  data-modal="modalNN">Neural Network</a></li>
+				          <li><a href="#dropdown2" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2"  data-modal="modalNB">Naive Bayes</a></li>
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
@@ -107,8 +107,8 @@
 				      		<img src="img/dt1.png" />
 				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Decision_tree_learning" target="blank">Decision Tree Learning</a></p>
 				      	</div>
-				      	<div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab"  data-modal="modalNN">
-				        	<p>Neural Network, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+				      	<div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab"  data-modal="modalNB">
+				        	<p>Naive Bayes, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
 				      	</div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab" data-modal="modalLR">
 					        <p>[From wikipedia.com]</p>
@@ -158,7 +158,7 @@ same forever.</p>
 			      		<div class="modal-header">
 			        		<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button> -->
 			        		<label class="modal-title modalDT mpara" id="myModalLabel">Decision Tree</label>
-			        		<label class="modal-title modalNN mpara" id="myModalLabel">Neural Network</label>
+			        		<label class="modal-title modalNB mpara" id="myModalLabel">Naive Bayes</label>
 			        		<label class="modal-title modalLR mpara" id="myModalLabel">Linear Regression</label>
 			        		<label class="modal-title modalRT mpara" id="myModalLabel">Regression Tree</label>
 			        		<label class="modal-title modalKM mpara" id="myModalLabel">K-means</label>
@@ -170,9 +170,8 @@ same forever.</p>
     							<input type="text" class="form-control" id="modalDT1" value="5">
     							<!-- <input type="text" class="form-control" id="modalDT2" value="12" data-default="12"> -->
      			      		</div>	
-     			      		<div class= "modalNN mpara">
-				      			<h4 class="modalLabel">Minimum number of points for each nn</h4>
-    							<input type="text" class="form-control" id="modalNN1" value="10">
+     			      		<div class= "modalNB mpara">
+				      			<h4 class="modalLabel">No Parameters</h4>
      			      		</div>	
      			      		<div class= "modalKM mpara">
 				      			<h4 class="modalLabel">Number of clusters (less than 10)</h4>

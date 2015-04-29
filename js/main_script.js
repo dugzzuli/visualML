@@ -101,7 +101,9 @@ $(function () {
 			else if(rightModal=="modalLR"){
 				//No Parameters
 			}		
-			
+			else if(rightModal=="modalNB"){
+				//No Parameters
+			}	
 			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);
 				pos = $(this).attr("coordinate");
