@@ -28,12 +28,19 @@ var colorCollection = d3.scale.category20();
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
+            .attr("viewBox","0 0 "+(panelWidth+paddingRight+paddingLeft)+" "+(panelHeight+paddingTop+paddingBottom))
+            .attr("preserveAspectRatio", "xMidYMid")
             .attr("width", panelWidth+paddingRight+paddingLeft)
             .attr("height", panelHeight+paddingTop+paddingBottom)
             .attr("id", "plotPanel")
             .on("mousedown", mousedown)
             .on("mouseup", mouseup)
             .on("click", click);
+
+$(window).resize(function() {
+  var width = $("#board").width();
+  svg.attr("width", width);
+});
 
 //define x scale
 //Create the Scale we will use for the x Axis

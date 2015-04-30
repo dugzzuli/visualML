@@ -253,7 +253,10 @@ $(function () {
 	$('#placePoint').click(function(){
 		px = $('#tpx').val();
 		py = $('#tpy').val();
-		if(!isNaN(Number(px))&&!isNaN(Number(py))&&Number(px)>=0&&Number(px)<1000&&Number(py)>=0&&Number(py)<1000){
+		if(px=="" || py==""){
+			alert("Plase enter X and Y");
+		}
+		else if(!isNaN(Number(px))&&!isNaN(Number(py))&&Number(px)>=0&&Number(px)<1000&&Number(py)>=0&&Number(py)<1000){
 			px = Math.floor(px * 100) / 100;
 			py = Math.floor(py * 100) / 100;
 			addNewPointOption1Place(px, py)
