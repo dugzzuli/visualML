@@ -108,7 +108,11 @@
 				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Decision_tree_learning" target="blank">Decision Tree Learning</a></p>
 				      	</div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab"  data-modal="modalNB">
-				        	<p>Naive Bayes, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+				        	<p class="from">[From <a href="http://learning.cis.upenn.edu/cis520_fall2009/index.php?n=Lectures.NaiveBayes" target="blank">Naive Bayes Model Lecture</a> by Ben Taskar and wikipedia.com]</p>
+				        	<p>In machine learning, <b class="topic">Naive Bayes classifiers</b> are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features.</p>
+				      		<p>Suppose our data is from two classes (plus and circle) in two dimensions (x1 and x2). The Naive Bayes classifier will estimate a Gaussian for each class and each dimension. We can visualize the estimated distribution by drawing a contour of the density. The decision boundary, where the probability of each class given the input is equal, is shown in red.</p>
+				      		<img src="img/nb1.jpg" />
+				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="blank">Naive Bayes Classifier</a></p>
 				      	</div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab" data-modal="modalLR">
 					        <p class="from">[From wikipedia.com]</p>
