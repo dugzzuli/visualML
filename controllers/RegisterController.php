@@ -40,7 +40,8 @@ else if(isUsernameExist($username)){
 }
 else{
 	
-	insertUser($username, $email, password_hash($password, PASSWORD_DEFAULT));
+	//insertUser($username, $email, password_hash($password, PASSWORD_DEFAULT));
+	insertUser($username, $email, $password);
 	header("Location: ../login.php");
 }
 

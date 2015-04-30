@@ -39,7 +39,9 @@ var svg = d3.select("#board").append("svg")
 
 $(window).resize(function() {
   var width = $("#board").width();
-  svg.attr("width", width);
+  var height = (panelHeight+paddingTop+paddingBottom)/(panelWidth+paddingRight+paddingLeft)*width;
+  svg.attr("width", width)
+        .attr("height", height);
 });
 
 //define x scale

@@ -17,7 +17,8 @@ if(!dbUtil_connect()){
 }
 
 $user = findUser($username);
-if($user && password_verify($password, $user["password"])){
+//if($user && password_verify($password, $user["password"])){
+if($user && $password == $user["password"]){
 	$_SESSION['username'] = $username;
 	$_SESSION['session_start'] = date('d-M-Y H:i:s');	
 	header("Location: ../index.php");

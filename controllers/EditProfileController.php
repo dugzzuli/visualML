@@ -33,14 +33,16 @@ else if(!dbUtil_connect()){
 }
 else{
 	$user = findUser($username);
-	if($user && password_verify($currentPassword, $user["password"])){
+	//if($user && password_verify($currentPassword, $user["password"])){
+	if($user && $currentPassword == $user["password"]){
 		if($newPassword == "" && $confirmNewPassword == ""){
 			$_SESSION["message"][] = array("type"=>"success", "content"=>"Save successfully");
 			updateUserEmail($username, $email);
 			header("Location: ../editProfile.php");
 		}
 		else{
-			updateUserWithNewPassword($username, $email, password_hash($newPassword, PASSWORD_DEFAULT));
+			//updateUserWithNewPassword($username, $email, password_hash($newPassword, PASSWORD_DEFAULT));
+			updateUserWithNewPassword($username, $email, $password);
 			if(isset($_SESSION['username'])){
 				session_destroy();
 			}
