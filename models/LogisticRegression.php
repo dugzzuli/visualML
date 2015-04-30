@@ -6,7 +6,7 @@ function g($z){
 function computePredict($theta,$data){
 	$predict = array();
 	//$error = array();
-	for($i=0;$i<count($data);$i+=1){
+	foreach($data as $i=>$aPoint){
 		$predict[$i] = g($theta[0]+$theta[1]*$data[$i]['x']+$theta[2]*$data[$i]['y']);
 	}
 	return $predict;
@@ -49,7 +49,7 @@ function logistic_regression($data,$alpha,$lambda){
 			$y=0;
 			//-----------theta 0 -------------
 			$sum = 0;
-			for($i=0;$i<$m;$i+=1){
+			foreach($data as $i=>$aPoint){
 				if($data[$i]['label']==$class) $y = 1;
 				else $y = 0; 
 				$sum += $predict[$i]-$y;
@@ -57,7 +57,7 @@ function logistic_regression($data,$alpha,$lambda){
 			$theta[$class][0] -= ($alpha*$sum)/($m);
 			//-----------theta 1 -------------
 			$sum = 0;
-			for($i=0;$i<$m;$i+=1){
+			foreach($data as $i=>$aPoint){
 				if($data[$i]['label']==$class) $y = 1;
 				else $y = 0; 
 				$sum += ($predict[$i]-$y)*$data[$i]['x'];
@@ -65,7 +65,7 @@ function logistic_regression($data,$alpha,$lambda){
 			$theta[$class][1] -= ($alpha*($sum-$lambda*$theta[$class][1]))/($m);
 			//-----------theta 2 -------------
 			$sum = 0;
-			for($i=0;$i<$m;$i+=1){
+			foreach($data as $i=>$aPoint){
 				if($data[$i]['label']==$class) $y = 1;
 				else $y = 0; 
 				$sum += ($predict[$i]-$y)*$data[$i]['y'];

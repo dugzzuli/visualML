@@ -56,4 +56,34 @@ function dbscan($data,$eps,$minPts){
 			'debug'=>$debug];
 }
 
+$clusters = array();
+$visited = array();
+
+function regionQuery($data, $index, $eps){
+	$region = array();
+	foreach($data as $index=>$aPoint){
+		if(distance($aPoint,$data[$index])<=$eps) $region[]=$index;
+	}
+	return $region;
+}
+
+function tui_dbscan($data,$eps,$minPts){
+	$clusters = array();
+	$visited = array();
+
+	foreach ($data as $index => $aPoint) {
+		if(in_array($index, $visited)) continue;
+		$visited[] = $index;
+		$neighborPts = regionQuery($data, $index, $eps);
+		if(count($neighborPts)>=$minPts){
+			$clusters[] = array();
+			expandCluster($index,$neighborPts,$clusters[count($clusters)-1],$eps,$minPts,$data);
+		}	
+	}
+
+	return ['clusters'=>$data,
+			//'centroids'=>$centroids,
+			'results'=>$results,
+			'debug'=>$debug];
+}
 ?>
