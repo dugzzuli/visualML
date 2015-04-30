@@ -160,8 +160,14 @@ $(function () {
 						resultHTML += '<tr>';
 						resultHTML += '<td>';
 						if(algo == "K-means" && key.indexOf("C") == 0){
-							 var clusterIndex = key.substring(1,2);
-							 resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex - 1)+';"></i> ';
+							var clusterIndex = key.substring(1,2);
+							resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex - 1)+';"></i> ';
+						}
+						else if(algo == "DBSCAN" && key.indexOf("No.") == 0){
+							var clusterIndex = key.substring(20,21);
+							if(key.indexOf("outliers")<0)	resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex)+';"></i> ';
+							else resultHTML += '<i class="fa fa-square" style="color:grey;"></i> ';
+							
 						}
 						resultHTML += key;
 						resultHTML += '</td>';

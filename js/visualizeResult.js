@@ -23,6 +23,25 @@ function NBResult(datadot){
 	}
 }
 
+function LOResult(datadot, lines){
+	resetPlotPanel();
+	var line_count = lines.length;
+	for(label in lines){
+		findEndPointOfLine(lines[label].m, lines[label].c);
+		svg.append("line")
+			.attr("x1", x1)
+			.attr("y1", y1)
+			.attr("x2", x2)
+			.attr("y2", y2)
+			.style("stroke", class_color[label])
+			.attr("class", "LOline runResult");
+	}
+	var data_count = datadot.length;
+	for(var i=0; i < data_count; i+=1){
+		classificationPlotResultData(datadot[i]);
+	}
+}
+
 function classificationPlotResultData(data){
     var x = dataToPixelScaleX(data.x);
     var y = dataToPixelScaleY(data.y);
@@ -97,7 +116,21 @@ function LRResult(m, c){
 	clearResult();
 	LRm = m;
 	LRc = c;
-	var x1,x2,y1,y2;
+	findEndPointOfLine(m, c);
+	svg.append("line")
+		.attr("x1", x1)
+		.attr("y1", y1)
+		.attr("x2", x2)
+		.attr("y2", y2)
+		.attr("class", "LRline runResult");
+	
+}
+
+function computeLR(x){
+	return LRm*x + LRc;
+}
+
+function findEndPointOfLine(m, c){
 	x1 = 0;
 	y1 = c;
 	if(y1 < 0 || y1 > 1000){
@@ -112,21 +145,8 @@ function LRResult(m, c){
 		else y2 = 0;
 		x2 = (y2 - c)/m;
 	}
-
 	x1 = dataToPixelScaleX(x1);
 	x2 = dataToPixelScaleX(x2);
 	y1 = dataToPixelScaleY(y1);
 	y2 = dataToPixelScaleY(y2);
-
-	svg.append("line")
-		.attr("x1", x1)
-		.attr("y1", y1)
-		.attr("x2", x2)
-		.attr("y2", y2)
-		.attr("class", "LRline runResult");
-	
-}
-
-function computeLR(x){
-	return LRm*x + LRc;
 }

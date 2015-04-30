@@ -36,7 +36,7 @@
 								$content.= '<li class="dropdown">';
 								$content.= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'.$_SESSION['username'].'<span class="caret"></span></a>';
 								$content.='<ul class="dropdown-menu" role="menu">
-								            <li><a href="#">Edit Profile</a></li>
+								            <li><a href="editProfile.php">Edit Profile</a></li>
 								            <li class="divider"></li>
 								            <li><a href="Controllers/LogoutController.php">Logout</a></li>
 								        </ul>';
