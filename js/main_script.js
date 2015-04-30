@@ -15,9 +15,9 @@ $(function () {
 		}
 		else{
 			$(".toolbutton").removeClass('current');
+			initialAlgoParameterAndData()
 			$(this).addClass('current');
 			isPlot = true;
-			console.log(isPlot);
 		}
 		if($('.current').hasClass('pinbutton')){
 			plotOption = 1;
@@ -83,6 +83,7 @@ $(function () {
 
 
 	$("#classifyButton").click(function () {
+			allToolbuttonOut();
 			$(".loader").show();
 			var url = "controllers/mainController.php";
 			var postData = {};
@@ -134,14 +135,19 @@ $(function () {
 				}).done(function (jsonReturnData) { 
 					// Result handler
 					console.log(jsonReturnData);
-					returnData = JSON.parse(jsonReturnData);
-					results = returnData.result.results;
-					resultHTML = '<table class="table">';
+					var returnData = JSON.parse(jsonReturnData);
+					var results = returnData.result.results;
+					var algo = returnData.result.results.Algorithm;
+					var resultHTML = '<table class="table">';
 					console.log(results);
 					for(var key in results){
 						console.log(key);
 						resultHTML += '<tr>';
 						resultHTML += '<td>';
+						if(algo == "K-means" && key.indexOf("C") == 0){
+							 var clusterIndex = key.substring(1,2);
+							 resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex - 1)+';"></i> ';
+						}
 						resultHTML += key;
 						resultHTML += '</td>';
 						resultHTML += '<td>';
@@ -172,12 +178,13 @@ $(function () {
 					}
 					else if(rightModal == "modalLR"){
 						LRResult(returnData.result.value.m, returnData.result.value.c);
+						addLRTest();
 					}
 					else if(rightModal == "modalNB"){
 						NBResult(returnData.result.data);
 					}
-					allToolbuttonOut();
 					$(".loader").hide();
+					activaTab('results');
 				});
 			}
 		}
@@ -216,6 +223,7 @@ $(function () {
 		plotOption1_addPoint = true;
 	});
 
+
 	$('#placePoint').click(function(){
 		px = $('#tpx').val();
 		py = $('#tpy').val();
@@ -236,7 +244,10 @@ $(function () {
 		}
 		
 	});
-})
+
+
+	
+});
 
 function changePlotOption1ToDefault(){
 	plotOption1_addPoint = false;
@@ -253,4 +264,36 @@ function allToolbuttonOut(){
 function updatePinPoint(x, y){
 	$("#tpx").val(x.toFixed(2));
 	$("#tpy").val(y.toFixed(2));
+}
+
+function activaTab(tab){
+    $('#myTab a[href="#' + tab + '"]').tab('show');
+};
+
+function addLRTest(){
+	var htmlText = "<h4>Test:</h4>";
+	htmlText += '<div class = "form-inline">';
+	htmlText += '<div class="input-group col-md-4 col-md-offset-1">'+
+				  	'<span class="input-group-addon" id="LRX">X</span>'+
+				  	'<input type="text" name="LRX" id="LRInputX" class="form-control">'+
+				'</div>';
+	htmlText += '<div class="input-group col-md-4 col-md-offset-1">'+
+				  	'<span class="input-group-addon" id="LRY">Y</span>'+
+				  	'<input type="text" name="LRY" id="LRInputY" class="form-control" style="color:black;" disabled>'+
+				'</div>';
+	htmlText += '</div>';
+	$('#results').append(htmlText);
+
+	$('#LRInputX').keydown(function (e){
+	    if(e.keyCode == 13){
+	        var px = $('#LRInputX').val();
+	        if(!isNaN(Number(px))){
+	        	var py = computeLR(px);
+	        	$('#LRInputY').val(py.toFixed(2));
+	        }
+	        else{
+	        	alert("x must be a number");
+	        }
+	    }
+	});
 }

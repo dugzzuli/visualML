@@ -7,6 +7,7 @@ var paddingRight = 20;
 
 var isClassification = true;
 var selectedClass = "A";
+var oldSelectedClass = "A";
 
 var maxX = 1000;
 var maxY = 1000;
@@ -94,16 +95,13 @@ function initialPlotPanel(){
                     .call(yAxis);
 }
 
-function resetPlotPanel(){
-    svg.selectAll("*").remove();
-    initialPlotPanel();
-}
 
 function initialAlgoParameterAndData(){
     if(isClassification){
-        selectedClass = "A";
+        selectedClass = oldSelectedClass;
     }
     else{
+        oldSelectedClass = selectedClass;
         selectedClass = "U";
     }
     adjustScreenForAlgoChange();
@@ -163,6 +161,11 @@ function addNewPointOption1Place(x, y){
 
 function clearResult(){
     svg.selectAll(".runResult").remove();
+}
+
+function resetPlotPanel(){
+    svg.selectAll("*").remove();
+    initialPlotPanel();
 }
 
 function clearAllDataPoint(){

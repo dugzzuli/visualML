@@ -95,6 +95,8 @@ function ClusteringResult(data){
 
 function LRResult(m, c){
 	clearResult();
+	LRm = m;
+	LRc = c;
 	var x1,x2,y1,y2;
 	x1 = 0;
 	y1 = c;
@@ -123,4 +125,8 @@ function LRResult(m, c){
 		.attr("y2", y2)
 		.attr("class", "LRline runResult");
 	
+}
+
+function computeLR(x){
+	return LRm*x + LRc;
 }
