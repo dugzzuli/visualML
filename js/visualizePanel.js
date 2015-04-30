@@ -25,6 +25,9 @@ var historyForUndo = [];
 var historyTemp = [];
 
 var colorCollection = d3.scale.category20(); 
+for(var i=0; i<20; i+=1){
+    colorCollection(i);
+}
 
 // Create the SVG
 var svg = d3.select("#board").append("svg")
@@ -325,6 +328,11 @@ function mousemove_circle(){
 function update_mousemove_circle(radius){
     plot3_radius = radius;
     svg.select("#circleRandomPlot").attr("r", ""+plot3_radius);
+}
+
+function convertIndexColorCollection(num){
+    if(num < 10)    return num*2;
+    else return num*2-19;
 }
 
 $('#option #class1').click(function(){

@@ -161,11 +161,11 @@ $(function () {
 						resultHTML += '<td>';
 						if(algo == "K-means" && key.indexOf("C") == 0){
 							var clusterIndex = key.substring(1,2);
-							resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex - 1)+';"></i> ';
+							resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(convertIndexColorCollection(clusterIndex - 1))+';"></i> ';
 						}
 						else if(algo == "DBSCAN" && key.indexOf("No.") == 0){
 							var clusterIndex = key.substring(20,21);
-							if(key.indexOf("outliers")<0)	resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(clusterIndex)+';"></i> ';
+							if(key.indexOf("outliers")<0)	resultHTML += '<i class="fa fa-square" style="color:'+colorCollection(convertIndexColorCollection(clusterIndex))+';"></i> ';
 							else resultHTML += '<i class="fa fa-square" style="color:grey;"></i> ';
 							
 						}

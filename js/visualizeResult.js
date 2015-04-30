@@ -83,7 +83,7 @@ function KMCentroid(centroids){
             .attr("y", y)
             .attr("width", 10)
             .attr("height", 10)
-            .attr("fill", colorCollection(i));
+            .attr("fill", colorCollection(convertIndexColorCollection(i)));
 	}
 }
 
@@ -97,7 +97,7 @@ function ClusteringResult(data){
 	    	fillColor = "grey";
 	    }
 	    else{
-	    	fillColor = colorCollection(data[i].predict);
+	    	fillColor = colorCollection(convertIndexColorCollection(data[i].predict));
 	    }
         svg.append("circle")
             .attr("transform", "translate(" + x + "," + y + ")")
