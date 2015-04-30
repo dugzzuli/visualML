@@ -101,7 +101,6 @@ function initialAlgoParameterAndData(){
         selectedClass = oldSelectedClass;
     }
     else{
-        oldSelectedClass = selectedClass;
         selectedClass = "U";
     }
     adjustScreenForAlgoChange();

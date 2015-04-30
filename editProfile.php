@@ -31,36 +31,32 @@
 						
 					}
 					unset($_SESSION['message']);
-
-					if(!isset($_GET['user_data'])) 
-				    { 
-				        header("Location: controllers/editProfile_getData.php");
-				    } 
+					include('editProfile_getData.php');
 				?>
 
 				<div class="form-group col-lg-12">
 					<label>Username</label>
-					<input type="text" name="username" class="form-control" id="" value="<?php $_GET[]?>">
+					<input type="text" name="username" class="form-control" id="" value="<?php print $username ?>" disabled>
 				</div>
 
 				<div class="form-group col-lg-12">
 					<label>Email</label>
-					<input type="text" name="username" class="form-control" id="" value="">
+					<input type="text" name="email" class="form-control" id="" value="<?php print $email ?>">
 				</div>
 
 				<div class="form-group col-lg-12">
 					<label>New Password</label>
-					<input type="password" name="password" class="form-control" id="" value="">
+					<input type="password" name="new_password" class="form-control" id="" value="">
 				</div>
 
 				<div class="form-group col-lg-12">
 					<label>Confirm New Password</label>
-					<input type="password" name="password" class="form-control" id="" value="">
+					<input type="password" name="confirm_new_password" class="form-control" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12">
-					<label>Password</label>
-					<input type="password" name="password" class="form-control" id="" value="">
+					<label>Current Password</label>
+					<input type="password" name="current_password" class="form-control" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12" id="register_button">
