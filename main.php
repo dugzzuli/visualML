@@ -79,6 +79,7 @@
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
 				          <li><a href="#dropdown1" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" class="active" data-modal="modalDT">Decision Tree</a></li>
 				          <li><a href="#dropdown2" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2"  data-modal="modalNB">Naive Bayes</a></li>
+				          <li><a href="#dropdown7" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown7-tab" data-toggle="tab" aria-controls="dropdown7"  data-modal="modalLO">Logistic Regression</a></li>
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
@@ -114,6 +115,9 @@
 				      		<img src="img/nb1.jpg" />
 				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="blank">Naive Bayes Classifier</a></p>
 				      	</div>
+				      	<div role="tabpanel" class="tab-pane fade" id="dropdown7" aria-labelledBy="dropdown7-tab"  data-modal="modalLO">
+				        	<p>Logistic Regression</p>	
+				        </div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab" data-modal="modalLR">
 					        <p class="from">[From wikipedia.com]</p>
 				        	<p>
@@ -164,6 +168,7 @@ same forever.</p>
 			        		<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button> -->
 			        		<label class="modal-title modalDT mpara" id="myModalLabel">Decision Tree</label>
 			        		<label class="modal-title modalNB mpara" id="myModalLabel">Naive Bayes</label>
+			        		<label class="modal-title modalLO mpara" id="myModalLabel">Logistic Regression</label>
 			        		<label class="modal-title modalLR mpara" id="myModalLabel">Linear Regression</label>
 			        		<label class="modal-title modalRT mpara" id="myModalLabel">Regression Tree</label>
 			        		<label class="modal-title modalKM mpara" id="myModalLabel">K-means</label>
@@ -177,7 +182,13 @@ same forever.</p>
      			      		</div>	
      			      		<div class= "modalNB mpara">
 				      			<h4 class="modalLabel">No Parameters</h4>
-     			      		</div>	
+     			      		</div>
+     			      		<div class= "modalLO mpara">
+				      			<h4 class="modalLabel">Learning Rate (Alpha) [...,0.01,0.03,1,3,10,30,...]</h4>
+    							<input type="text" class="form-control" id="modalLO1" value="1">
+    							<h4 class="modalLabel">Regularization Parameter (Lambda)</h4>
+    							<input type="text" class="form-control" id="modalLO2" value="0">
+     			      		</div>		
      			      		<div class= "modalKM mpara">
 				      			<h4 class="modalLabel">Number of clusters (less than 10)</h4>
     							<input type="text" class="form-control" id="modalKM1" value="5">

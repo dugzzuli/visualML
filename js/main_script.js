@@ -102,6 +102,10 @@ $(function () {
 			}	
 			else if(rightModal=="modalNB"){
 				//No Parameters
+			}
+			else if(rightModal=="modalLO"){
+				postData.alpha = $('#modalLO1').val();
+				postData.lambda = $('#modalLO2').val();
 			}	
 			var jsonData = [];
 			$('#plotPanel > circle.datadot').each(function () {
@@ -175,6 +179,9 @@ $(function () {
 					}
 					else if(rightModal == "modalNB"){
 						NBResult(returnData.result.data);
+					}
+					else if(rightModal == "modalLO"){
+						//
 					}
 					allToolbuttonOut();
 					$(".loader").hide();

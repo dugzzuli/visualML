@@ -16,7 +16,7 @@ function dbscan($data,$eps,$minPts){
 	$distance = array();
 	for($i=0;$i<$count;$i+=1){
 		$aRow = array();
-		for($j=0;$j<$count;$j+=1){
+		for($j=$i+1;$j<$count;$j+=1){
 			$aRow[$j] = distance($data[$i],$data[$j]);
 		}
 		$distance[$i] = $aRow;

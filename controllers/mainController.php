@@ -5,6 +5,7 @@ include("../models/Kmeans.php");
 include("../models/Dbscan.php");
 include("../models/LinearRegression.php");
 include("../models/NaiveBayes.php");
+include("../models/LogisticRegression.php");
 
 $algorithm = $_POST["Algorithm"];
 $data = json_decode($_POST["inputData"],true);
@@ -32,6 +33,12 @@ else if($algorithm == "modalLR"){
 }
 else if($algorithm == "modalNB"){
 	$result = naive_bayes($data);
+	print json_encode(array("status"=>$status, "result"=>$result));
+}
+else if($algorithm == "modalLO"){
+	$alpha = $_POST["alpha"];
+	$lambda = $_POST["lambda"];
+	$result = logistic_regression($data,$alpha,$lambda);
 	print json_encode(array("status"=>$status, "result"=>$result));
 }
 ?>
