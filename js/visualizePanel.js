@@ -312,6 +312,11 @@ function mousemove_circle(){
     svg.select("#circleRandomPlot").attr("transform", "translate(" + x + "," + y + ")");
 }
 
+function update_mousemove_circle(radius){
+    plot3_radius = radius;
+    svg.select("#circleRandomPlot").attr("r", ""+plot3_radius);
+}
+
 $('#option #class1').click(function(){
     selectedClass = "A";
 });

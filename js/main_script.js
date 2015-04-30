@@ -266,7 +266,19 @@ $(function () {
 		
 	});
 
+	$('#increaseR').click(){
+		if(plot3_radius <= 60){
+			update_mousemove_circle(plot3_radius + 10);
+		}
+	}
 
+	$('#increaseL').click(){
+		if(plot3_radius >= 40){
+			update_mousemove_circle(plot3_radius - 10);
+		}
+	}
+
+	
 	
 });
 
