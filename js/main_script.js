@@ -180,7 +180,7 @@ $(function () {
 							alert("Cannot show results, too many clusters.");
 						}
 						else{
-							DBResult(returnData.result.clusters);
+							DBResult(returnData.result.data);
 						}
 					}
 					else if(rightModal=="modalKM"){

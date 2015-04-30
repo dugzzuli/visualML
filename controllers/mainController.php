@@ -24,7 +24,7 @@ else if($algorithm == "modalKM"){
 else if($algorithm == "modalDB"){
 	$eps = $_POST["eps"];
 	$minPts = $_POST["minPts"];
-	$result = dbscan($data, $eps, $minPts);
+	$result = tui_dbscan($data, $eps, $minPts);
 	print json_encode(array("status"=>$status, "result"=>$result));
 }
 else if($algorithm == "modalLR"){
