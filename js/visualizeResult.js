@@ -11,11 +11,19 @@ function DTResult(boundary, datadot){
 
 	var data_count = datadot.length;
 	for(var i=0; i < data_count; i+=1){
-		DTPlotResultData(datadot[i]);
+		classificationPlotResultData(datadot[i]);
 	}
 }
 
-function DTPlotResultData(data){
+function NBResult(datadot){
+	resetPlotPanel();
+	var data_count = datadot.length;
+	for(var i=0; i < data_count; i+=1){
+		classificationPlotResultData(datadot[i]);
+	}
+}
+
+function classificationPlotResultData(data){
     var x = dataToPixelScaleX(data.x);
     var y = dataToPixelScaleY(data.y);
     var predictClassCSS = "";
