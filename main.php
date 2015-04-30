@@ -101,7 +101,7 @@
 				<div class="tab-content">
 			  		<div id="myTabContent" class="tab-content">
 				      	<div role="tabpanel" class="tab-pane fade in active" id="dropdown1" aria-labelledBy="dropdown1-tab"  data-modal="modalDT">
-				        	<p>[From wikipedia.com]</p>
+				        	<p class="from">[From wikipedia.com]</p>
 				        	<p><b class="topic">Decision tree learning</b> is a method commonly used in data mining. The goal is to create a model that predicts the value of a target variable based on several input variables. Each interior node corresponds to one of the input variables; there are edges to children for each of the possible values of that input variable. Each leaf represents a value of the target variable given the values of the input variables represented by the path from the root to the leaf.</p>
 				      		<img src="img/dt2.png" />
 				      		<img src="img/dt1.png" />
@@ -111,7 +111,7 @@
 				        	<p>Naive Bayes, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
 				      	</div>
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab" data-modal="modalLR">
-					        <p>[From wikipedia.com]</p>
+					        <p class="from">[From wikipedia.com]</p>
 				        	<p>
 				        		In statistics, <b class="topic">simple linear regression</b> is the least squares estimator of a linear regression model with a single explanatory variable. In other words, simple linear regression fits a straight line through the set of n points in such a way that makes the sum of squared residuals of the model (that is, vertical distances between the points of the data set and the fitted line) as small as possible.
 				        	</p>
@@ -126,7 +126,7 @@
 					        <p>Regression Tree, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledBy="home-tab" data-modal="modalKM">
-					        <p>[From Data Mining By Ian H. Witten & Eibe Frank]</p>
+					        <p class="from">[From Data Mining By Ian H. Witten & Eibe Frank and wikipedia.com]</p>
 					        <p>The classic clustering technique is called <b class="topic">K-means</b>. First, you specify in advance
 how many clusters are being sought: this is the parameter k. Then k points are
 chosen at random as cluster centers. All instances are assigned to their closest
@@ -138,10 +138,11 @@ continues until the same points are assigned to each cluster in consecutive
 rounds, at which stage the cluster centers have stabilized and will remain the
 same forever.</p>
 							<img src="img/km1.png" />
+							<p>As it is a heuristic algorithm, there is no guarantee that it will converge to the global optimum, and the result may depend on the initial clusters. As the algorithm is usually very fast, it is common to run it multiple times with different starting conditions. However, in the worst case, k-means can be very slow to converge: in particular it has been shown that there exist certain point sets, even in 2 dimensions, on which k-means takes exponential time, that is 2<sup>Ω(n)</sup>, to converge. These point sets do not seem to arise in practice: this is corroborated by the fact that the smoothed running time of k-means is polynomial.</p>
 							<p>Read More -- <a href="en.wikipedia.org/wiki/K-means_clustering" target="blank">K-means Clustering</a></p>
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledBy="profile-tab" data-modal="modalDB">
-					        <p>[From wikipedia.com]</p>
+					        <p class="from">[From wikipedia.com]</p>
 					        <p><b class="topic">Density-based spatial clustering of applications with noise (DBSCAN)</b> is a data clustering algorithm proposed by Martin Ester, Hans-Peter Kriegel, Jorg Sander and Xiaowei Xu in 1996. It is a density-based clustering algorithm: given a set of points in some space, it groups together points that are closely packed together (points with many nearby neighbors), marking as outliers points that lie alone in low-density regions (whose nearest neighbors are too far away). DBSCAN is one of the most common clustering algorithms and also most cited in scientific literature.</p>
 					    	<img src="img/db1.png" />
 					    	<p>DBSCAN requires two parameters: ε (eps) and the minimum number of points required to form a dense region(minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.</p>

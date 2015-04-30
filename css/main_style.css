@@ -184,3 +184,7 @@ body{
     transform: rotate(360deg);
   }
 }
+
+.from{
+	color: #AAA;
+}

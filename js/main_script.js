@@ -163,7 +163,7 @@ $(function () {
 					}
 				}
 				else if(rightModal=="modalKM"){
-					KMResult(returnData.result.belongs_to, returnData.result.centroids);
+					KMResult(returnData.result.data, returnData.result.centroids);
 				}
 				else if(rightModal == "modalLR"){
 					LRResult(returnData.result.value.m, returnData.result.value.c);
