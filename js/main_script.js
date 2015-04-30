@@ -53,25 +53,31 @@ $(function () {
 		var changedText = $(this).text()+' ';
 		var colorPoint = $('<i class="fa fa-circle" style="color:red;"></i>');
 		selectedClass = "A";
+		oldSelectedClass = selectedClass;
 		if($(this).hasClass('CB')){
 			colorPoint = $('<i class="fa fa-circle" style="color:green;"></i>');
 			selectedClass = "B";
+			oldSelectedClass = selectedClass;
 		}
 		else if($(this).hasClass('CC')){
 			colorPoint = $('<i class="fa fa-circle" style="color:blue;"></i>');
 			selectedClass = "C";
+			oldSelectedClass = selectedClass;
 		}
 		else if($(this).hasClass('CD')){
 			colorPoint = $('<i class="fa fa-circle" style="color:orange;"></i>');
 			selectedClass = "D";
+			oldSelectedClass = selectedClass;
 		}
 		else if($(this).hasClass('CE')){
 			colorPoint = $('<i class="fa fa-circle" style="color:purple;"></i>');
 			selectedClass = "E";
+			oldSelectedClass = selectedClass;
 		}
 		else if($(this).hasClass('CU')){
 			colorPoint = $('<i class="fa fa-circle" style="color:grey;"></i>');
 			selectedClass = "U";
+			oldSelectedClass = selectedClass;
 		}
 		$("#dropdownMenu2").text(changedText);
 		$("#dropdownMenu2").prepend(colorPoint);
@@ -188,7 +194,7 @@ $(function () {
 						NBResult(returnData.result.data);
 					}
 					else if(rightModal == "modalLO"){
-						//
+						//LOResult()
 					}
 					allToolbuttonOut();
 					$(".loader").hide();
@@ -206,6 +212,7 @@ $(function () {
 		$('#selectClassPanel').show();
 		if(rightModal=="modalKM" || rightModal=="modalDB" || rightModal=="modalLR" || rightModal=="modalRT"){
 			$('#selectClassPanel').hide();
+			if(isClassification) oldSelectedClass = selectedClass;
 			isClassification = false;
 			initialAlgoParameterAndData();
 		}

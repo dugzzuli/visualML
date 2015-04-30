@@ -11,5 +11,8 @@
 	if($user){
 		$email = $user["email"];
 	}
+	else{
+		$email = "cannot find email";
+	}
 
 ?>
