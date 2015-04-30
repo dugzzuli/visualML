@@ -205,7 +205,7 @@ same forever.</p>
 				    	</div>
 					    <div class="modal-footer">
 					    	<button type="button" class="btn btn-info" id="setDefault">Set Default</button>
-					        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Save changes</button>
+					        <button type="button" id="saveChangePara" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Save changes</button>
 					    </div>
 			    	</div>			    	
 			    </div>

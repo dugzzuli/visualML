@@ -101,13 +101,54 @@ $(function () {
 			postData.Algorithm = rightModal;
 			if(rightModal=="modalDT"){
 				postData.minpts = $('#modalDT1').val();
+				if(isNaN(Number(postData.minpts))||Number(postData.minpts)<1){
+					alert("Parameters are not valid, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
+				else if(postData.minpts != parseInt(postData.minpts, 10)){
+					alert("Parameters should be an integer, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
 			}
 			else if(rightModal=="modalKM"){
 				postData.k = $('#modalKM1').val();
+				if(isNaN(Number(postData.k))||Number(postData.k)<1){
+					alert("Parameters are not valid, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
+				else if(Number(postData.k)>10){
+					alert("Please enter k < 10");
+					$(".loader").hide();
+					return false;
+				}
+				else if(postData.k != parseInt(postData.k, 10)){
+					alert("Parameters should be an integer, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
 			}	
 			else if(rightModal=="modalDB"){
 				postData.eps = $('#modalDB1').val();
+				if(isNaN(Number(postData.eps))||Number(postData.eps)<0){
+					alert("Parameters are not valid, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
 				postData.minPts = $('#modalDB2').val();
+				if(isNaN(Number(postData.minPts))||Number(postData.minPts)<1){
+					alert("Parameters are not valid, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
+				else if(postData.minPts != parseInt(postData.minPts, 10)){
+					alert("Parameters should be an integer, please adjust.");
+					$(".loader").hide();
+					return false;
+				}
+
 			}
 			else if(rightModal=="modalLR"){
 				//No Parameters

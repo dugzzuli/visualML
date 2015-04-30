@@ -139,7 +139,14 @@ function decisionTree($data,$minpts){
 	$results['Total Testing Cases'] = count($allData)-count($data);
 	$results['Total Training Cases'] = count($data);
 	$results['Classify Training Case Correctly'] = $correctClassify;
-	$results['Classify Training Case Accuracy'] = number_format($correctClassify*100/count($data),2)."%";
+	if(count($data)!=0){
+		
+		$results['Classify Training Case Accuracy'] = number_format($correctClassify*100/count($data),2)."%";	
+	}
+	else{
+		$results['Classify Training Case Accuracy'] = "0%";		
+	}
+	
 
 
 
