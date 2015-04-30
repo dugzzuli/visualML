@@ -17,6 +17,7 @@ function onePredict($theta,$data){
 	return $predict;
 }
 function logistic_regression($data,$alpha,$lambda){
+	$startTime = microtime();
 	$countAll = count($data);
 	$allData = $data;
 	$aggStart = ['A'=>0, 'B'=>0, 'C'=>0, 'D'=>0, 'E'=>0];
@@ -29,12 +30,13 @@ function logistic_regression($data,$alpha,$lambda){
 		}
 	}
 	$m = count($data);
-	$theta = ['A'=>[],'B'=>[],'C'=>[],'D'=>[],'E'=>[]];
+	$theta = array();
 	$numClass = 0;
 	foreach ($aggStart as $value) {
 		if($value>0) $numClass+=1;
 	}
 	$maxRound = (900000/($numClass*$m));
+	$continue = true;
 	foreach(['A','B','C','D','E'] as $class){
 		if($aggStart[$class]==0) continue;
 		//$theta[$class] = [rand(-50,50), rand(-50,50), rand(-50,50)];
@@ -74,8 +76,12 @@ function logistic_regression($data,$alpha,$lambda){
 			//$continue = ($oldTheta!=$theta[$class]);
 			$count += 1;
 			//$continue = ($count!== 2000);
+			if(microtime()-$startTime>25000000) break;
 		}
+		//if(microtime()-$startTime>25000000) break;
 	}
+	$msg='';
+	if($continue!=false) $msg = "timeout";
 	$correctClassify = 0;
 	foreach ($allData as &$aPoint) {
 		$aPoint['predict'] = "U";
@@ -111,7 +117,8 @@ function logistic_regression($data,$alpha,$lambda){
 			'data'=>$allData,
 			'line'=>$line,
 			'results'=>$results,
-			'debug'=>$debug];
+			'debug'=>$debug,
+			'msg'=>$msg];
 }
 
 ?>
