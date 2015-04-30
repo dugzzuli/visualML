@@ -179,7 +179,13 @@
 	color: gray;
 }
 
-#layoutImgBlock #sample2{
+#layoutImgBlock{
+	border-radius: 5px;
+	height:250px;
+	width:400px;
+}
+
+#sample2{
 	border-radius: 5px;
 	height:250px;
 	width:400px;
@@ -211,4 +217,10 @@
 	border-radius: 5px;
 	height:270px;
 	width:500px;
+}
+@media all and (max-width: 992px){
+	.problemDescription img{
+		text-align: center;
+		width:70%;
+	}
 }
