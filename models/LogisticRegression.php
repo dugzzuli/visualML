@@ -39,8 +39,8 @@ function logistic_regression($data,$alpha,$lambda){
 	$continue = true;
 	foreach(['A','B','C','D','E'] as $class){
 		if($aggStart[$class]==0) continue;
-		//$theta[$class] = [rand(-50,50), rand(-50,50), rand(-50,50)];
-		$theta[$class] = [0,0,0];
+		$theta[$class] = [rand(-50,50), rand(-50,50), rand(-50,50)];
+		//$theta[$class] = [0,0,0];
 		$continue = true;
 		$count = 0;
 		while($continue){
@@ -81,38 +81,48 @@ function logistic_regression($data,$alpha,$lambda){
 		//if(microtime()-$startTime>25000000) break;
 	}
 	$msg='';
-	if($continue!=false) $msg = "timeout";
-	$correctClassify = 0;
-	foreach ($allData as &$aPoint) {
-		$aPoint['predict'] = "U";
-		$classMax = null;
-		$maxProb = -1;
+	if($continue!=false){
+		$msg = "timeout";
+		return ['theta'=>$theta,
+			'data'=>$allData,
+			//'line'=>$line,
+			//'results'=>$results,
+			//'debug'=>$debug,
+			'msg'=>$msg];
+	}
+	else{
+		$correctClassify = 0;
+		foreach ($allData as &$aPoint) {
+			$aPoint['predict'] = "U";
+			$classMax = null;
+			$maxProb = -1;
+			foreach(['A','B','C','D','E'] as $class){
+				if($aggStart[$class]==0) continue;
+				$prob = onePredict($theta[$class],$aPoint);
+				if($prob>$maxProb){
+					$maxProb = $prob;
+					$classMax = $class;
+				}
+			}
+			$aPoint['predict'] = $classMax;
+			if($aPoint['predict']==$aPoint['label']) $correctClassify += 1;
+		}
+		$line = array();
 		foreach(['A','B','C','D','E'] as $class){
 			if($aggStart[$class]==0) continue;
-			$prob = onePredict($theta[$class],$aPoint);
-			if($prob>$maxProb){
-				$maxProb = $prob;
-				$classMax = $class;
-			}
+			$line[$class]['m'] = -($theta[$class][1]/$theta[$class][2]);
+			$line[$class]['c'] = -($theta[$class][0]/$theta[$class][2]);
 		}
-		$aPoint['predict'] = $classMax;
-		if($aPoint['predict']==$aPoint['label']) $correctClassify += 1;
-	}
-	$line = array();
-	foreach(['A','B','C','D','E'] as $class){
-		if($aggStart[$class]==0) continue;
-		$line[$class]['m'] = -($theta[$class][1]/$theta[$class][2]);
-		$line[$class]['c'] = -($theta[$class][0]/$theta[$class][2]);
-	}
 
-	$results = [];
-	$results['Algorithm'] = 'Logistic Regression';
-	$results['Total Testing Cases'] = $countAll-$m;
-	$results['Total Training Cases'] = $m;
-	$results['Classify Training Case Correctly'] = $correctClassify;
-	$results['Classify Training Case Accuracy'] = number_format($correctClassify*100/$m,2)."%";
-	$debug = [];
-	//$boundary = [];
+		$results = [];
+		$results['Algorithm'] = 'Logistic Regression';
+		$results['Total Testing Cases'] = $countAll-$m;
+		$results['Total Training Cases'] = $m;
+		$results['Classify Training Case Correctly'] = $correctClassify;
+		$results['Classify Training Case Accuracy'] = number_format($correctClassify*100/$m,2)."%";
+		$debug = [];
+		//$boundary = [];
+	}
 	return ['theta'=>$theta,
 			'data'=>$allData,
 			'line'=>$line,

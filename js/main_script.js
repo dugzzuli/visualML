@@ -6,6 +6,7 @@ $(function () {
 	$('.mpara').hide();
 	$('.modalDT').show();
 	$('#placePoint').hide();
+	$('.brush').hide();
 	var rightModal = "modalDT";
 	$(".toolbutton").click(function(){
 		if($(this).hasClass('current')){
@@ -37,6 +38,10 @@ $(function () {
 		if($('.current').hasClass('brushbutton')){
 			plotOption = 3;
 			cursorForPlot();
+			$('.brush').show();
+		}
+		else{
+			$('.brush').hide();
 		}
 	});
 
@@ -110,10 +115,10 @@ $(function () {
 			else if(rightModal=="modalNB"){
 				//No Parameters
 			}
-			else if(rightModal=="modalLO"){
-				postData.alpha = $('#modalLO1').val();
-				postData.lambda = $('#modalLO2').val();
-			}	
+			// else if(rightModal=="modalLO"){
+			// 	postData.alpha = $('#modalLO1').val();
+			// 	postData.lambda = $('#modalLO2').val();
+			// }	
 			var jsonData = [];
 			$('#plotPanel > circle.datadot').each(function () {
 				//console.log(this);
@@ -199,9 +204,9 @@ $(function () {
 					else if(rightModal == "modalNB"){
 						NBResult(returnData.result.data);
 					}
-					else if(rightModal == "modalLO"){
-						LOResult(returnData.result.data, returnData.result.line);
-					}
+					// else if(rightModal == "modalLO"){
+					// 	//LOResult()
+					// }
 					allToolbuttonOut();
 					$(".loader").hide();
 					activaTab('results');

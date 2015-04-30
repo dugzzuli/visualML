@@ -79,14 +79,14 @@
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
 				          <li><a href="#dropdown1" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" class="active" data-modal="modalDT">Decision Tree</a></li>
 				          <li><a href="#dropdown2" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2"  data-modal="modalNB">Naive Bayes</a></li>
-				          <li><a href="#dropdown7" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown7-tab" data-toggle="tab" aria-controls="dropdown7"  data-modal="modalLO">Logistic Regression</a></li>
+				          <!-- <li><a href="#dropdown7" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown7-tab" data-toggle="tab" aria-controls="dropdown7"  data-modal="modalLO">Logistic Regression</a></li> -->
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
 				        <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop2-contents">Regression<span class="caret"></span></a>
 				        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2" id="myTabDrop2-contents">
 				          <li><a href="#dropdown3" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown3-tab" data-toggle="tab" aria-controls="dropdown3"  data-modal="modalLR">Linear Regression</a></li>
-				          <li><a href="#dropdown4" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown4-tab" data-toggle="tab" aria-controls="dropdown4"  data-modal="modalRT">Regression Tree</a></li>
+				          <!-- <li><a href="#dropdown4" class="dropdown-submenu" tabindex="-1" role="tab" id="dropdown4-tab" data-toggle="tab" aria-controls="dropdown4"  data-modal="modalRT">Regression Tree</a></li> -->
 				        </ul>
 				  	</li>
 				  	<li role="presentation" class="dropdown">
@@ -115,9 +115,9 @@
 				      		<img src="img/nb1.jpg" />
 				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="blank">Naive Bayes Classifier</a></p>
 				      	</div>
-				      	<div role="tabpanel" class="tab-pane fade" id="dropdown7" aria-labelledBy="dropdown7-tab"  data-modal="modalLO">
+				      	<!-- <div role="tabpanel" class="tab-pane fade" id="dropdown7" aria-labelledBy="dropdown7-tab"  data-modal="modalLO">
 				        	<p>Logistic Regression</p>	
-				        </div>
+				        </div> -->
 				      	<div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledBy="home-tab" data-modal="modalLR">
 					        <p class="from">[From wikipedia.com]</p>
 				        	<p>
@@ -130,9 +130,9 @@
 				      		<img src="img/lr2.png" />
 				      		<p>Read More -- <a href="http://en.wikipedia.org/wiki/Simple_linear_regression" target="blank">Simple Linear Regression</a></p>
 				      	</div>
-					    <div role="tabpanel" class="tab-pane fade" id="dropdown4" aria-labelledBy="profile-tab" data-modal="modalRT">
+					   <!--  <div role="tabpanel" class="tab-pane fade" id="dropdown4" aria-labelledBy="profile-tab" data-modal="modalRT">
 					        <p>Regression Tree, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-					    </div>
+					    </div> -->
 					    <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledBy="home-tab" data-modal="modalKM">
 					        <p class="from">[From Data Mining By Ian H. Witten & Eibe Frank and wikipedia.com]</p>
 					        <p>The classic clustering technique is called <b class="topic">K-means</b>. First, you specify in advance
@@ -168,9 +168,9 @@ same forever.</p>
 			        		<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button> -->
 			        		<label class="modal-title modalDT mpara" id="myModalLabel">Decision Tree</label>
 			        		<label class="modal-title modalNB mpara" id="myModalLabel">Naive Bayes</label>
-			        		<label class="modal-title modalLO mpara" id="myModalLabel">Logistic Regression</label>
+			        		<!-- <label class="modal-title modalLO mpara" id="myModalLabel">Logistic Regression</label> -->
 			        		<label class="modal-title modalLR mpara" id="myModalLabel">Linear Regression</label>
-			        		<label class="modal-title modalRT mpara" id="myModalLabel">Regression Tree</label>
+			        		<!-- <label class="modal-title modalRT mpara" id="myModalLabel">Regression Tree</label> -->
 			        		<label class="modal-title modalKM mpara" id="myModalLabel">K-means</label>
 			        		<label class="modal-title modalDB mpara" id="myModalLabel">DBSCAN</label>
 			      		</div>
@@ -183,12 +183,12 @@ same forever.</p>
      			      		<div class= "modalNB mpara">
 				      			<h4 class="modalLabel">No Parameters</h4>
      			      		</div>
-     			      		<div class= "modalLO mpara">
+     			      		<!-- <div class= "modalLO mpara">
 				      			<h4 class="modalLabel">Learning Rate (Alpha) [...,0.01,0.03,1,3,10,30,...]</h4>
     							<input type="text" class="form-control" id="modalLO1" value="1">
     							<h4 class="modalLabel">Regularization Parameter (Lambda)</h4>
     							<input type="text" class="form-control" id="modalLO2" value="0">
-     			      		</div>		
+     			      		</div>	 -->	
      			      		<div class= "modalKM mpara">
 				      			<h4 class="modalLabel">Number of clusters (less than 10)</h4>
     							<input type="text" class="form-control" id="modalKM1" value="5">
@@ -252,11 +252,24 @@ same forever.</p>
 					  	<span class="input-group-addon" id="px">X</span>
 					  	<input type="text" name="px" id="tpx" class="form-control">
 					</div>
+					<div class="input-group brush">
+					  	R:&nbsp;
+					  	<button type="button" class="btn-sm btn-default" id="decreaseR">
+							<i class="fa fa-minus"></i>
+						</button>
+					  	<button type="button" class="btn-sm btn-default" id="increaseR">
+							<i class="fa fa-plus"></i>
+						</button>						
+					</div>
 				</div>
 				<div class="col-md-1 pp">
 					<div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="py">Y</span>
 					  	<input type="text" name="py" id="tpy" class="form-control">
+					</div>
+					<div class="input-group brush">
+					  	<span class="input-group-addon" id="numP">P</span>
+					  	<input type="text" name="py" id="numPoint" class="form-control" value="50">
 					</div>
 				</div>
 				<div class="col-md-1 pp">

@@ -188,3 +188,7 @@ body{
 .from{
 	color: #AAA;
 }
+
+.pp .brush{
+	font-size: 15px;
+}
