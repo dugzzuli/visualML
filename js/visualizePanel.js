@@ -227,7 +227,8 @@ function click() {
                 var y = point[1];
                 num_point = 0;
                 historyTemp = [];
-                while(num_point < 10){
+                var numPoint = readNumPoint_Plot3();
+                while(num_point < numPoint){
                     randx = (Math.random() * (plot3_radius * 2 + 1)) + (x - plot3_radius);
                     randy = (Math.random() * (plot3_radius * 2 + 1)) + (y - plot3_radius);
                     if(Math.pow((randx - x), 2) + Math.pow((randy - y), 2) <= plot3_radius*plot3_radius && randx >= paddingLeft && randx < paddingLeft+panelWidth && randy > paddingTop && randy <= paddingTop+panelHeight){

@@ -269,7 +269,7 @@ same forever.</p>
 					</div>
 					<div class="input-group brush">
 					  	<span class="input-group-addon" id="numP">P</span>
-					  	<input type="text" name="py" id="numPoint" class="form-control" value="50">
+					  	<input type="text" name="py" id="numPoint" class="form-control" value="10">
 					</div>
 				</div>
 				<div class="col-md-1 pp">
