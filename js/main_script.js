@@ -194,7 +194,7 @@ $(function () {
 						NBResult(returnData.result.data);
 					}
 					else if(rightModal == "modalLO"){
-						//LOResult()
+						LOResult(returnData.result.data, returnData.result.line);
 					}
 					allToolbuttonOut();
 					$(".loader").hide();

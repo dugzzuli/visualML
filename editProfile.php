@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title> VisualML:register </title>
+		<title> VisualML:edit profile </title>
 		<meta charset="utf-8"/>
 		<link href='http://fonts.googleapis.com/css?family=Felipa' rel='stylesheet' type='text/css'> 
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/> 
@@ -14,7 +14,7 @@
 			<div class="banner">
 				<img src="img/VisualML.png"/>
 			</div>
-			<form class="col-md-4 col-md-offset-4" action="controllers/LoginController.php" method="post">
+			<form class="col-md-4 col-md-offset-4" action="controllers/EditProfileController.php" method="post">
 				<h1 class="text-center">Edit Profile</h1>
 				<?php
 					if(!isset($_SESSION)) 
@@ -26,7 +26,12 @@
 					}
 					if(isset($_SESSION['message'])&&count($_SESSION['message'])>0){
 						foreach ($_SESSION['message'] as $message) {
-							if($message["type"]=="error") print '<div class="alert alert-danger" role="alert">'.$message["content"].'</div>';
+							if($message["type"]=="error"){
+								print '<div class="alert alert-danger" role="alert">'.$message["content"].'</div>';
+							}
+							else if($message["type"]=="success"){
+								print '<div class="alert alert-success" role="alert">'.$message["content"].'</div>';
+							}
 						}
 						
 					}
@@ -60,7 +65,7 @@
 				</div>
 				
 				<div class="form-group col-lg-12" id="register_button">
-					<button type="submit" value="submit" class="btn btn-block btn-success btn-lg">Login</button>
+					<button type="submit" value="submit" class="btn btn-block btn-success btn-lg">Save</button>
 				</div>					
 			</form>
 		</div>

@@ -32,4 +32,23 @@ function isUsernameExist($username){
 	return mysqli_num_rows($r) > 0;
 }
 
+function updateUserEmail($username, $email){
+	global $db;
+	if(!isset($db)) return false;
+	$q = 'UPDATE visualml_users '.
+			'SET email = "'.$email.'" '.
+			'WHERE username = "'.$username.'"';
+	return mysqli_query($db,$q);
+}
+
+function updateUserWithNewPassword($username, $email, $password){
+	global $db;
+	if(!isset($db)) return false;
+	$q = "UPDATE visualml_users ".
+			"SET email = '".$email."' ".
+			", password = '".$password."' ".
+			"WHERE username = '".$username."'";
+	return mysqli_query($db,$q);
+}
+
 ?>
