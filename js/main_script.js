@@ -274,7 +274,19 @@ $(function () {
 		
 	});
 
+	$('#increaseR').click(function(){
+		if(plot3_radius <= 60){
+			update_mousemove_circle(plot3_radius + 10);
+		}
+	});
 
+	$('#decreaseR').click(function(){
+		if(plot3_radius >= 40){
+			update_mousemove_circle(plot3_radius - 10);
+		}
+	});
+
+	
 	
 });
 
@@ -325,4 +337,17 @@ function addLRTest(){
 	        }
 	    }
 	});
+}
+
+function readNumPoint_Plot3(){
+	var numPoint = $("#numPoint").val();
+	if(isNaN(Number(numPoint))){
+		alert("Number of points(P) is not a number");
+	}
+	else if(numPoint <= 0 || numPoint > 50){
+		alert("Number of points(P) must be 1-50");
+	}
+	else{
+		return numPoint;
+	}
 }
