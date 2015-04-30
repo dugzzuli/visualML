@@ -99,7 +99,7 @@
 				  	<li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">Results</a></li>
 				</ul>
 
-				<div class="tab-content">
+				<div class="tab-content" id="algoDetail">
 			  		<div id="myTabContent" class="tab-content">
 				      	<div role="tabpanel" class="tab-pane fade in active" id="dropdown1" aria-labelledBy="dropdown1-tab"  data-modal="modalDT">
 				        	<p class="from">[From wikipedia.com]</p>
@@ -247,7 +247,7 @@ same forever.</p>
 						</div>
 					</div>					
 				</div>
-				<div class="col-md-1 pp">
+				<div class="col-xs-6 col-md-1 pp">
                     <div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="px">X</span>
 					  	<input type="text" name="px" id="tpx" class="form-control">
@@ -262,7 +262,7 @@ same forever.</p>
 						</button>						
 					</div>
 				</div>
-				<div class="col-md-1 pp">
+				<div class="col-xs-6 col-md-1 pp">
 					<div class="input-group pinpoint">
 					  	<span class="input-group-addon" id="py">Y</span>
 					  	<input type="text" name="py" id="tpy" class="form-control">
@@ -272,7 +272,7 @@ same forever.</p>
 					  	<input type="text" name="py" id="numPoint" class="form-control" value="50">
 					</div>
 				</div>
-				<div class="col-md-1 pp">
+				<div class="col-xs-6 col-md-1 pp">
 					<div class="pinpoint">
 						<button type="button" class="btn btn-default" id="addPoint">
 							<i class="fa fa-plus"></i>
@@ -286,9 +286,13 @@ same forever.</p>
 				<div class="col-md-2" id="adjustParameter">
 					<button type="button" class="btn btn-primary btn-block" id="adjustPara" data-toggle="modal" data-target="#myModal">Adjust Parameters</button>
 				</div>
-			</div>
+				<div class="col-xs-12" id="resultsExtra">
 
+				</div>
+			</div>
+			
 		</div>
+		
 		<div class="loader"></div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>

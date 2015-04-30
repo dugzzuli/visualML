@@ -179,8 +179,11 @@ $(function () {
 					//resultHTML += '<tr><td></td><td></td></tr>';
 					resultHTML += '</table>';
 					var resultContent = $(resultHTML);
+					var resultExtraContent =  $(resultHTML);
 					$('#results').empty();
 					$('#results').append(resultContent);
+					$('#resultsExtra').empty();
+					$('#resultsExtra').append(resultExtraContent);
 					clearHistory()
 					//plot panel: show result
 					if(rightModal=="modalDT"){
@@ -309,7 +312,7 @@ function addLRTest(){
 				'</div>';
 	htmlText += '</div>';
 	$('#results').append(htmlText);
-
+	$('#resultsExtra').append(htmlText);
 	$('#LRInputX').keydown(function (e){
 	    if(e.keyCode == 13){
 	        var px = $('#LRInputX').val();
