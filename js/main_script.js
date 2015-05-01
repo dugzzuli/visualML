@@ -391,6 +391,9 @@ function readNumPoint_Plot3(){
 	else if(numPoint <= 0 || numPoint > 50){
 		alert("Number of points(P) must be 1-50");
 	}
+	else if(numPoint != parseInt(numPoint, 10)){
+		alert("Number of points(P) must be an integer, please adjust.");
+	}
 	else{
 		return numPoint;
 	}
